@@ -1,4 +1,4 @@
-Author: Callum
+Author: Callum 
 
 # Guide to Setting Up Mamba (Conda) on a Linux Machine
 
