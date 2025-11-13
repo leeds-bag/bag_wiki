@@ -1,6 +1,6 @@
-Author: Callum 
-
 # Guide to Setting Up Mamba (Conda) on a Linux Machine
+
+Author: Callum 
 
 ## What is Mamba?
 Mamba is a fast, robust, and user-friendly package manager for managing environments and packages in the Conda ecosystem. It is a drop-in replacement for the Conda command-line tool, written in C++ for speed and efficiency. Mamba uses the same environment and package specifications as Conda, but resolves dependencies and installs packages much faster, making it ideal for scientific computing, data science, and reproducible research.
