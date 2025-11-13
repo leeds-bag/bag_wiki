@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Tutorial: Regridding 2D NetCDF Datasets in Python with xESMF - Leeds BAG Wiki</title>
+    <title>Regridding with Python - Leeds BAG Wiki</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Tutorial: Regridding 2D NetCDF Datasets in Python with xESMF";
+        var mkdocs_page_name = "Regridding with Python";
         var mkdocs_page_input_path = "how_to_regrid_xesmf_tutorial.md";
         var mkdocs_page_url = null;
       </script>
@@ -44,10 +44,58 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">How-to guides</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../how-to-example/">Example guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Regridding with Python</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-loading-a-netcdf-dataset">1. Loading a NetCDF Dataset</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#plotting-the-input-data">Plotting the Input Data</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-defining-the-target-grid">2. Defining the Target Grid</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#visualizing-the-target-grid">Visualizing the Target Grid</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-regridding-with-xesmf">3. Regridding with xESMF</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#choosing-a-regridding-algorithm">Choosing a Regridding Algorithm</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#summary-table">Summary Table</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-bilinear-regridding">Example: Bilinear Regridding</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-conservative-regridding">Example: Conservative Regridding</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-conservative-normed-regridding">Example: Conservative-normed Regridding</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#using-a-mask-layer">Using a 'mask' Layer</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-nearest-neighbor-regridding">Example: Nearest Neighbor Regridding</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-considerations">4. Considerations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#working-with-large-datasets">Working with Large Datasets</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -64,7 +112,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Tutorial: Regridding 2D NetCDF Datasets in Python with xESMF</li>
+          <li class="breadcrumb-item">How-to guides</li>
+      <li class="breadcrumb-item active">Regridding with Python</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/how_to_regrid_xesmf_tutorial.md">Edit on leeds-bag/bag_wiki</a>
     </li>
@@ -283,6 +332,9 @@ plt.show()
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../linux_cheat_sheet/" class="btn btn-neutral float-left" title="Linux Cheat Sheet"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
 
   <hr/>
 
@@ -307,6 +359,8 @@ plt.show()
           <a href="https://github.com/leeds-bag/bag_wiki" class="fa fa-code-fork" style="color: #fcfcfc"> leeds-bag/bag_wiki</a>
         </span>
     
+    
+      <span><a href="../linux_cheat_sheet/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
   </span>
