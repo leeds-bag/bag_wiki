@@ -6,7 +6,7 @@ repo_url: https://github.com/leeds-bag/bag_wiki
 edit_uri: edit/main/docs
 
 theme:
-  name: material
+  name: rtd-dropdown
 
 nav:
   - Home: index.md
