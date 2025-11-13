@@ -14,7 +14,7 @@ This guide details how to split an A1 poster into four separate A3 PDF sheets fo
 3.  Select the **PDF-XChange 5.0 for ABBYY** printer option as shown in the image. 
     * *Note: This acts as a virtual printer to convert the document.*
 
-![selecting PDF print](bag_wiki/assets/printing_1.png)
+![selecting PDF print](/assets/printing_1.png)
 
 ---
 
