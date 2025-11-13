@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Mamba Set Up - Leeds BAG Wiki</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Mamba Set Up";
+        var mkdocs_page_input_path = "conda_setup.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Leeds BAG Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Mamba Set Up</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-mamba">What is Mamba?</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#why-use-mamba">Why Use Mamba?</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installing-mamba-via-miniforge">Installing Mamba via Miniforge</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-download-the-miniforge-installer">Step 1: Download the Miniforge Installer</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-run-the-installer-script">Step 2: Run the Installer Script</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-initialize-conda">Step 3: Initialize Conda</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-mamba">Using Mamba</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tips-and-best-practices">Tips and Best Practices</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#why-use-conda-forge">Why Use conda-forge?</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#further-reading">Further Reading</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installing-mamba">Installing mamba</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../how_to_regrid_xesmf_tutorial/">Regridding with Python</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Leeds BAG Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">How-to guides</li>
+      <li class="breadcrumb-item active">Mamba Set Up</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/conda_setup.md">Edit on leeds-bag/bag_wiki</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="guide-to-setting-up-mamba-conda-on-a-linux-machine">Guide to Setting Up Mamba (Conda) on a Linux Machine</h1>
+<h2 id="what-is-mamba">What is Mamba?</h2>
+<p>Mamba is a fast, robust, and user-friendly package manager for managing environments and packages in the Conda ecosystem. It is a drop-in replacement for the Conda command-line tool, written in C++ for speed and efficiency. Mamba uses the same environment and package specifications as Conda, but resolves dependencies and installs packages much faster, making it ideal for scientific computing, data science, and reproducible research.</p>
+<h3 id="why-use-mamba">Why Use Mamba?</h3>
+<ul>
+<li><strong>Speed</strong>: Mamba is significantly faster than Conda, especially for solving complex dependencies and installing large packages.</li>
+<li><strong>Reliability</strong>: Mamba uses parallel downloading and a more efficient dependency resolver, reducing installation errors and timeouts.</li>
+<li><strong>Compatibility</strong>: Mamba works seamlessly with existing Conda environments and packages. You can use <code>mamba</code> and <code>conda</code> commands interchangeably.</li>
+<li><strong>Community Support</strong>: Mamba is developed and maintained by the open-source community, with strong support from the conda-forge project.</li>
+</ul>
+<h2 id="installing-mamba-via-miniforge">Installing Mamba via Miniforge</h2>
+<p>Miniforge is a minimal installer for Conda and Mamba, maintained by conda-forge. It is recommended for Unix-like platforms (Linux, macOS, WSL) and comes with Mamba pre-installed.</p>
+<h3 id="step-1-download-the-miniforge-installer">Step 1: Download the Miniforge Installer</h3>
+<p>Open a terminal and download the installer appropriate for your system architecture. You can use <code>wget</code>:</p>
+<p><strong>Using wget:</strong></p>
+<pre><code class="language-bash">wget &quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh&quot;
+</code></pre>
+<h3 id="step-2-run-the-installer-script">Step 2: Run the Installer Script</h3>
+<p>Run the downloaded script to install Miniforge (and Mamba):</p>
+<pre><code class="language-bash">bash Miniforge3-$(uname)-$(uname -m).sh
+</code></pre>
+<p>Follow the prompts to complete the installation. By default, Miniforge will install to your home directory (e.g., <code>~/miniforge3</code>).</p>
+<h3 id="step-3-initialize-conda">Step 3: Initialize Conda</h3>
+<p>After installation, initialize Conda in your shell:</p>
+<pre><code class="language-bash">source ~/miniforge3/bin/activate
+conda init
+</code></pre>
+<p>Restart your terminal to activate Conda automatically.</p>
+<h2 id="using-mamba">Using Mamba</h2>
+<p>Mamba is a drop-in replacement for Conda. Simply use <code>mamba</code> instead of <code>conda</code> for faster operations:</p>
+<ul>
+<li><strong>Create a new environment:</strong>
+  <code>bash
+  mamba create -n myenv python=3.11 numpy pandas</code></li>
+<li><strong>Activate an environment:</strong>
+  <code>bash
+  conda activate myenv</code></li>
+<li><strong>Install packages:</strong>
+  <code>bash
+  mamba install scipy matplotlib</code></li>
+<li><strong>Update packages:</strong>
+  <code>bash
+  mamba update --all</code></li>
+<li><strong>List environments:</strong>
+  <code>bash
+  mamba env list</code></li>
+<li><strong>Remove an environment:</strong>
+  <code>bash
+  mamba env remove -n myenv</code></li>
+</ul>
+<h2 id="tips-and-best-practices">Tips and Best Practices</h2>
+<ul>
+<li>Always use the <code>conda-forge</code> channel for the latest, community-maintained packages.</li>
+</ul>
+<h3 id="why-use-conda-forge">Why Use conda-forge?</h3>
+<p>Using the <code>conda-forge</code> channel is important because it ensures all packages in your environment are built and maintained by the same community, following consistent standards. This greatly reduces the risk of dependency conflicts and broken environments that can occur when mixing packages from different channels. Conda-forge provides up-to-date versions, broad compatibility, and reliable builds for scientific and data science packages. By sticking to conda-forge, you make your environment more reproducible and robust.</p>
+<ul>
+<li>To update Mamba itself:
+  <code>bash
+  mamba update mamba</code></li>
+<li>For troubleshooting, use verbose mode:
+  <code>bash
+  mamba install &lt;package&gt; --verbose</code></li>
+</ul>
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://mamba.readthedocs.io/en/latest/">Mamba Documentation</a></li>
+<li><a href="https://github.com/conda-forge/miniforge">Miniforge GitHub</a></li>
+<li><a href="https://conda-forge.org/">Conda-forge</a></li>
+</ul>
+<p>Mamba makes managing scientific Python environments fast, reliable, and reproducible. Enjoy your new setup!</p>
+<h2 id="installing-mamba">Installing mamba</h2>
+<p>This works best in a clean environment. Create a new conda environment and install mamba using conda</p>
+<pre><code class="language-bash">conda install -c conda-forge mamba
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../linux_cheat_sheet/" class="btn btn-neutral float-left" title="Linux Cheat Sheet"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../how_to_regrid_xesmf_tutorial/" class="btn btn-neutral float-right" title="Regridding with Python">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/leeds-bag/bag_wiki" class="fa fa-code-fork" style="color: #fcfcfc"> leeds-bag/bag_wiki</a>
+        </span>
+    
+    
+      <span><a href="../linux_cheat_sheet/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../how_to_regrid_xesmf_tutorial/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
