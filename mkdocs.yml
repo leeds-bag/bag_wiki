@@ -12,7 +12,9 @@ nav:
   - Home: index.md
   - How-to guides:
       - Linux Cheat Sheet: linux_cheat_sheet.md
+      - Mamba Set Up: conda_setup.md
       - Regridding with Python: how_to_regrid_xesmf_tutorial.md
+      
 
 plugins:
   - search
