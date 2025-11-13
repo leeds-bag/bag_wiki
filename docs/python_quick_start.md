@@ -34,7 +34,7 @@ Environments keep your projects isolated, so packages for one project don’t in
 
 ```bash
 mamba create -n mypython python=3.11
-conda activate mypython
+mamba activate mypython
 ```
 
 ## Step 3: Install Packages
