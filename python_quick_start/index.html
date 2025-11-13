@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Python Quick Start Guide - Leeds BAG Wiki</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Python Quick Start Guide";
+        var mkdocs_page_input_path = "python_quick_start.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Leeds BAG Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../conda_setup/">Mamba Set Up</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../how_to_regrid_xesmf_tutorial/">Regridding with Python</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Leeds BAG Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Python Quick Start Guide</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/python_quick_start.md">Edit on leeds-bag/bag_wiki</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="python-quick-start-guide">Python Quick Start Guide</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Python is a powerful, easy-to-learn programming language widely used in science, data analysis, web development, automation, and more. This guide will help beginners get started with Python, focusing on best practices for installation, environment management, and basic usage. For scientific and data work, using Conda (or Mamba) is highly recommended—see the <a href="../conda_setup/">Conda Setup Guide</a> for details.</p>
+<h2 id="opening-a-terminal">Opening a Terminal</h2>
+<p>To use Python and Conda/Mamba, you'll need to open a terminal (command line window) on your computer:</p>
+<ul>
+<li><strong>Windows:</strong><ul>
+<li>If you have Windows Subsystem for Linux (WSL) installed, open the Start menu, search for "WSL" or your chosen Linux distribution (e.g., Ubuntu), and click to open a Linux terminal.</li>
+<li>Alternatively, use <a href="https://mobaxterm.mobatek.net/">MobaXterm</a>: install it, then open MobaXterm and start a local terminal or a WSL session.</li>
+</ul>
+</li>
+<li><strong>Mac:</strong><ul>
+<li>Open the Terminal app (find it in Applications &gt; Utilities, or search for "Terminal" in Spotlight).</li>
+</ul>
+</li>
+<li><strong>Linux:</strong><ul>
+<li>Open your system's Terminal app (often found in the applications menu, or use Ctrl+Alt+T as a shortcut).</li>
+</ul>
+</li>
+</ul>
+<p>Once your terminal is open, you can follow the steps below to install Python, set up environments, and run code.</p>
+<h2 id="why-use-python">Why Use Python?</h2>
+<ul>
+<li>Simple, readable syntax</li>
+<li>Large ecosystem of libraries for every purpose</li>
+<li>Excellent for beginners and experts alike</li>
+<li>Strong community support</li>
+</ul>
+<h2 id="step-1-install-python-recommended-via-condamamba">Step 1: Install Python (Recommended: via Conda/Mamba)</h2>
+<p>While you can install Python directly from python.org, the best way for scientific work is to use Conda or Mamba. This lets you easily manage multiple Python versions and install packages without conflicts.</p>
+<p><strong>See the <a href="../conda_setup/">Conda Setup Guide</a> for step-by-step instructions.</strong></p>
+<h2 id="step-2-create-a-python-environment">Step 2: Create a Python Environment</h2>
+<p>Environments keep your projects isolated, so packages for one project don’t interfere with another.</p>
+<pre><code class="language-bash">mamba create -n mypython python=3.11
+conda activate mypython
+</code></pre>
+<h2 id="step-3-install-packages">Step 3: Install Packages</h2>
+<p>Use Mamba (or Conda) to install packages from the conda-forge channel. This ensures compatibility and avoids dependency issues.</p>
+<pre><code class="language-bash">mamba install numpy pandas matplotlib
+</code></pre>
+<h2 id="step-4-write-and-run-python-code">Step 4: Write and Run Python Code</h2>
+<p>You can write Python code in a text editor (like VS Code) and run it from the terminal:</p>
+<pre><code class="language-bash">python myscript.py
+</code></pre>
+<p>Or use interactive notebooks (Jupyter) for data analysis:</p>
+<pre><code class="language-bash">mamba install jupyterlab
+jupyter lab
+</code></pre>
+<h2 id="step-5-learn-the-basics">Step 5: Learn the Basics</h2>
+<p>Here are some key concepts for beginners:
+- <strong>Variables</strong>: Store data (numbers, text, etc.)
+- <strong>Data types</strong>: int, float, str, list, dict, etc.
+- <strong>Control flow</strong>: if, for, while
+- <strong>Functions</strong>: Reusable blocks of code
+- <strong>Modules</strong>: Import libraries to extend Python’s capabilities</p>
+<p>Example:</p>
+<pre><code class="language-python"># myscript.py
+name = &quot;World&quot;
+print(f&quot;Hello, {name}!&quot;)
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<ul>
+<li>Always use environments for your projects</li>
+<li>Prefer conda-forge for package installs</li>
+<li>Keep your Python and packages up to date</li>
+<li>Use version control (e.g., git) for your code</li>
+<li>Read error messages—they help you debug!</li>
+</ul>
+<h2 id="useful-resources">Useful Resources</h2>
+<ul>
+<li><a href="../conda_setup/">Conda Setup Guide</a></li>
+<li><a href="https://docs.python.org/3/">Python Official Documentation</a></li>
+<li><a href="https://realpython.com/">Real Python Tutorials</a></li>
+<li><a href="https://jupyter.org/">Jupyter Project</a></li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>If you have issues with packages, check you’re using conda-forge and not mixing channels</li>
+<li>If Python isn’t found, make sure your environment is activated</li>
+<li>For help, search error messages or ask the community</li>
+</ul>
+<hr />
+<p>Python is a great language for learning and doing real-world work. With Conda/Mamba and conda-forge, you’ll avoid most installation headaches and be ready to explore!</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/leeds-bag/bag_wiki" class="fa fa-code-fork" style="color: #fcfcfc"> leeds-bag/bag_wiki</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
