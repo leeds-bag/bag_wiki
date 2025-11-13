@@ -13,6 +13,8 @@ nav:
   - How-to guides:
       - Contributing: contributing.md
       - Example guide: how-to-example.md
+      - Linux Cheat Sheet: linux_cheat_sheet.md
+      - Regridding with Python: how_to_regrid_xesmf_tutorial.md
 
 plugins:
   - search
