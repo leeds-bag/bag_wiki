@@ -1,0 +1,18 @@
+site_name: Leeds BAG Wiki
+site_description: "How-to guides, group resources, and documentation for the Leeds BAG research group."
+site_author: "Leeds BAG"
+repo_name: leeds-bag/bag_wiki
+repo_url: https://github.com/leeds-bag/bag_wiki
+edit_uri: edit/main/docs
+
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - How-to guides:
+      - Contributing: contributing.md
+      - Example guide: how-to-example.md
+
+plugins:
+  - search
