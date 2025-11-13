@@ -1,5 +1,7 @@
 # Linux Command Line Cheat Sheet
 
+Author: Callum 
+
 ## Introduction
 
 The Linux command line is a powerful tool for interacting with your computer. It allows you to navigate files, manage processes, and perform a wide range of tasks efficiently. Below are some essential commands and tips to get you started.
