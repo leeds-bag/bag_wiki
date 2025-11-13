@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Linux Command Line Cheat Sheet - Leeds BAG Wiki</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Linux Command Line Cheat Sheet";
+        var mkdocs_page_input_path = "linux_cheat_sheet.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Leeds BAG Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../how-to-example/">Example guide</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Leeds BAG Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Linux Command Line Cheat Sheet</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/linux_cheat_sheet.md">Edit on leeds-bag/bag_wiki</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="linux-command-line-cheat-sheet">Linux Command Line Cheat Sheet</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The Linux command line is a powerful tool for interacting with your computer. It allows you to navigate files, manage processes, and perform a wide range of tasks efficiently. Below are some essential commands and tips to get you started.</p>
+<hr />
+<h2 id="how-to-access-the-command-line">How to Access the Command Line</h2>
+<p>You can access the Linux command line in several ways, depending on your operating system and preferences:</p>
+<ul>
+<li><strong>Terminal (Linux/macOS):</strong> Most Linux distributions and macOS have a built-in Terminal app.</li>
+<li><strong>MobaXterm (Windows):</strong> A popular terminal emulator for Windows that provides SSH, SFTP, and more for connecting to Linux systems.</li>
+<li><strong>Windows Subsystem for Linux (WSL):</strong> Allows you to run a Linux environment directly on Windows. Open via the Windows Terminal or the WSL app.</li>
+<li><strong>VS Code Terminal:</strong> Visual Studio Code has an integrated terminal that can be used for command line access on any OS.</li>
+<li><strong>PuTTY (Windows):</strong> Lightweight SSH client for connecting to remote Linux servers.</li>
+<li><strong>Jupyter Notebooks:</strong> Some notebooks provide a terminal tab for command line access.</li>
+</ul>
+<p>Choose the method that best fits your workflow and system setup.</p>
+<h2 id="basic-navigation">Basic Navigation</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pwd</code></td>
+<td>Print current working directory</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>List files and directories</td>
+</tr>
+<tr>
+<td><code>ls -l</code></td>
+<td>List with details (long format)</td>
+</tr>
+<tr>
+<td><code>ls -a</code></td>
+<td>List all files, including hidden</td>
+</tr>
+<tr>
+<td><code>cd &lt;dir&gt;</code></td>
+<td>Change directory to <code>&lt;dir&gt;</code></td>
+</tr>
+<tr>
+<td><code>cd ..</code></td>
+<td>Go up one directory level</td>
+</tr>
+<tr>
+<td><code>cd ~</code></td>
+<td>Go to your home directory</td>
+</tr>
+<tr>
+<td><code>mkdir &lt;dir&gt;</code></td>
+<td>Create a new directory</td>
+</tr>
+<tr>
+<td><code>rmdir &lt;dir&gt;</code></td>
+<td>Remove an empty directory</td>
+</tr>
+<tr>
+<td><code>touch &lt;file&gt;</code></td>
+<td>Create an empty file</td>
+</tr>
+<tr>
+<td><code>rm &lt;file&gt;</code></td>
+<td>Remove a file</td>
+</tr>
+<tr>
+<td><code>cp &lt;src&gt; &lt;dest&gt;</code></td>
+<td>Copy file or directory</td>
+</tr>
+<tr>
+<td><code>mv &lt;src&gt; &lt;dest&gt;</code></td>
+<td>Move or rename file/directory</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="viewing-and-editing-files">Viewing and Editing Files</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cat &lt;file&gt;</code></td>
+<td>Display file contents</td>
+</tr>
+<tr>
+<td><code>less &lt;file&gt;</code></td>
+<td>View file one page at a time</td>
+</tr>
+<tr>
+<td><code>head &lt;file&gt;</code></td>
+<td>Show first 10 lines of a file</td>
+</tr>
+<tr>
+<td><code>tail &lt;file&gt;</code></td>
+<td>Show last 10 lines of a file</td>
+</tr>
+<tr>
+<td><code>nano &lt;file&gt;</code></td>
+<td>Edit file with nano text editor</td>
+</tr>
+<tr>
+<td><code>vim &lt;file&gt;</code></td>
+<td>Edit file with vim text editor</td>
+</tr>
+<tr>
+<td><code>grep 'text' &lt;file&gt;</code></td>
+<td>Search for 'text' in a file</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="system-info-management">System Info &amp; Management</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>whoami</code></td>
+<td>Show current user</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>Show current date and time</td>
+</tr>
+<tr>
+<td><code>df -h</code></td>
+<td>Show disk space usage</td>
+</tr>
+<tr>
+<td><code>du -sh &lt;dir&gt;</code></td>
+<td>Show size of a directory</td>
+</tr>
+<tr>
+<td><code>free -h</code></td>
+<td>Show memory usage</td>
+</tr>
+<tr>
+<td><code>top</code></td>
+<td>Show running processes</td>
+</tr>
+<tr>
+<td><code>ps aux</code></td>
+<td>List all running processes</td>
+</tr>
+<tr>
+<td><code>kill &lt;pid&gt;</code></td>
+<td>Kill process with process ID</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="file-permissions">File Permissions</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>chmod +x &lt;file&gt;</code></td>
+<td>Make file executable</td>
+</tr>
+<tr>
+<td><code>chmod 755 &lt;file&gt;</code></td>
+<td>Set permissions to rwxr-xr-x</td>
+</tr>
+<tr>
+<td><code>chown user:group &lt;file&gt;</code></td>
+<td>Change file owner and group</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="networking">Networking</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ping &lt;host&gt;</code></td>
+<td>Test network connection to host</td>
+</tr>
+<tr>
+<td><code>curl &lt;url&gt;</code></td>
+<td>Fetch content from a URL</td>
+</tr>
+<tr>
+<td><code>wget &lt;url&gt;</code></td>
+<td>Download file from a URL</td>
+</tr>
+<tr>
+<td><code>ssh user@host</code></td>
+<td>Connect to remote host via SSH</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="other-useful-commands">Other Useful Commands</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>history</code></td>
+<td>Show command history</td>
+</tr>
+<tr>
+<td><code>man &lt;command&gt;</code></td>
+<td>Show manual for a command</td>
+</tr>
+<tr>
+<td><code>echo "text"</code></td>
+<td>Print text to terminal</td>
+</tr>
+<tr>
+<td><code>tar -xzvf &lt;file.tar.gz&gt;</code></td>
+<td>Extract a tar.gz archive</td>
+</tr>
+<tr>
+<td><code>zip/unzip &lt;file.zip&gt;</code></td>
+<td>Compress or extract zip files</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tips">Tips</h2>
+<ul>
+<li>Use <code>Tab</code> for auto-completion.</li>
+<li>Use <code>Ctrl+C</code> to stop a running command.</li>
+<li>Use <code>Ctrl+R</code> to search command history.</li>
+<li>Use <code>&amp;&amp;</code> to chain commands (run next if previous succeeds).</li>
+</ul>
+<hr />
+<p>For more, see the <a href="https://www.gnu.org/software/coreutils/manual/coreutils.html">GNU Core Utilities Manual</a> or run <code>man &lt;command&gt;</code> in your terminal.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/leeds-bag/bag_wiki" class="fa fa-code-fork" style="color: #fcfcfc"> leeds-bag/bag_wiki</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
