@@ -39,7 +39,7 @@ places to get to grips with Python when first learning the language, as they all
 Complications arise when you want to do more than the basics, though.
 
 <figure>
-    <img src="/assets/Python_IDE.png" width="500" alt="Python IDE">
+    <img src="assets/Python_IDE.png" width="500" alt="Python IDE">
     <figcaption>Bog standard Python IDE, perfect as a learning sandbox but not much else</figcaption>
 </figure>
 
