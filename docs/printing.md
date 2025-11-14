@@ -14,7 +14,7 @@ This guide details how to split an A1 poster into four separate A3 PDF sheets fo
 3.  Select the **PDF-XChange 5.0 for ABBYY** printer option as shown in the image. 
     * *Note: This acts as a virtual printer to convert the document.*
 
-![selecting PDF print](/assets/printing_1.png)
+![selecting PDF print](assets/printing_1.png)
 
 ---
 
@@ -37,7 +37,7 @@ This guide details how to split an A1 poster into four separate A3 PDF sheets fo
 
 * **Action:** Print/Save as a separate PDF file (e.g., *Poster\_Part1.pdf*) after setting each coordinate pair.
 
-![selecting positioning](/assets/printing_2.png)
+![selecting positioning](assets/printing_2.png)
 
 ---
 
@@ -53,7 +53,7 @@ To successfully print A3 on campus:
 6.  Set the **Paper size** to **A3**. 
     * *Note: The user found this method more reliable than using the MyPrint portal.*
 
-![using chrome to print](/assets/printing_3.png)
+![using chrome to print](assets/printing_3.png)
 
 ---
 
