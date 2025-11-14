@@ -15,6 +15,7 @@ nav:
       - Python Quick Start: python_quick_start.md
       - Mamba Set Up: conda_setup.md
       - Regridding with Python: how_to_regrid_xesmf_tutorial.md
+      - Using VSCode: VSCode_guide.md
       - Printing A1: printing.md
       
 
