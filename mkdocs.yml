@@ -21,3 +21,6 @@ nav:
 
 plugins:
   - search
+  - files:
+      include:
+        - assets/**
