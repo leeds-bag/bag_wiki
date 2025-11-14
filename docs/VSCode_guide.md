@@ -26,7 +26,7 @@ Throughout, I draw upon the expertise shared in the following sources:
 ### Python
 
 <figure>
-    <img src="assets/python_antigravity.png" width="500" alt="python import antigravity comic by xkcd">
+    <img src="/assets/python_antigravity.png" width="500" alt="python import antigravity comic by xkcd">
     <figcaption>The benefits of Python. From <a href="https://xkcd.com/353" target="_blank">xkcd.com</a> by Randall Munroe </figcaption>
 </figure>
 
