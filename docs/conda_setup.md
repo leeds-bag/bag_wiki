@@ -90,9 +90,3 @@ Using the `conda-forge` channel is important because it ensures all packages in 
 - [Conda-forge](https://conda-forge.org/)
 
 Mamba makes managing scientific Python environments fast, reliable, and reproducible. Enjoy your new setup!
-
-## Installing mamba
-This works best in a clean environment. Create a new conda environment and install mamba using conda
-```bash
-conda install -c conda-forge mamba
-```
