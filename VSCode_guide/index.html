@@ -139,11 +139,6 @@
 <h2 id="vs-code-and-python">❓ VS Code and Python</h2>
 <h3 id="python">Python</h3>
 <p><img alt="png" src="../assets/python_antigravity.png" /></p>
-<!-- <figure>
-    <img src="/assets/python_antigravity.png" width="500" alt="python import antigravity comic by xkcd">
-    <figcaption>The benefits of Python. From <a href="https://xkcd.com/353" target="_blank">xkcd.com</a> by Randall Munroe </figcaption>
-</figure> -->
-
 <p>Python is one of the most successful programming languages, and for a reason! It values <em>readability</em> above all else, making it very user-friendly.
 It is open-source and primarily relies on importing libraries others have created to solve problems efficiently. This means you can lean on the
 work of others, who have likely solved the problem far more efficiently and cleanly than you could!</p>
@@ -151,11 +146,6 @@ work of others, who have likely solved the problem far more efficiently and clea
 places to get to grips with Python when first learning the language, as they allow you to focus on the basic coding you'll encounter in tutorials.
 Complications arise when you want to do more than the basics, though.</p>
 <p><img alt="png" src="../assets/Python_IDE.png" /></p>
-<!-- <figure>
-    <img src="assets/Python_IDE.png" width="500" alt="Python IDE">
-    <figcaption>Bog standard Python IDE, perfect as a learning sandbox but not much else</figcaption>
-</figure> -->
-
 <h3 id="environment-managers">Environment Managers</h3>
 <p>Python relies on libraries for most interesting things anyone might actually want to do. Perhaps you've found yourself in the following situation before?</p>
 <ul>
@@ -209,8 +199,10 @@ version 1.98 of VS Code to enable use. The new machines are, as of 06/10/2025, n
     <li>Uni laptop but not pre-installed</li>
       <p>If PulseSecure isn’t already available, it can be installed via Company Portal. Search the start menu for “Company Portal”. PulseSecure should be listed under the 'Apps' section.</p>
     <li>Personal computer</li>
-      <p>Go to the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">University of Leeds VPN guide</a>. Under attachments to the right of the screen, there is a list of VPN versions you can download. Select the appropriate download for your operating system and follow the setup wizard instructions.</p><img src="assets/PulseSecure_download.png" width="500">
+      <p>Go to the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">University of Leeds VPN guide</a>. Under attachments to the right of the screen, there is a list of VPN versions you can download. Select the appropriate download for your operating system and follow the setup wizard instructions.    
   </ol>
+
+  <img src="assets/PulseSecure_download.png" alt="png" width="600"/>
 
   <li>Once you have the VPN installed, follow the instructions on the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">VPN guide</a>, which detail how to connect.</li>
 </ol>
@@ -235,15 +227,20 @@ version 1.98 of VS Code to enable use. The new machines are, as of 06/10/2025, n
       <li>Pylance (install specific version: 2025.4.1 & turn off auto-update)</li>
       <li>Remote SSH (no downgrade necessary, as far as we know!)</li>
     </ol>
-    </p><img src="assets/VSCode_extensions.png" width="500">
+
+
+
 </ol>
 
+<p><img src="assets/VSCode_extensions.png" alt="png" width="600"/></p>
 <h3 id="3-config-file">3) config file</h3>
 <p>To ssh easily into remote machines like foe-linux, it's easiest to create a config file containing the details of the ssh connections you want to make. This is a file called <code>config</code> stored in the <code>.ssh</code> folder of your local machine. For linux users, the full path location will simply be <code>~/.ssh/config</code>. For Windows users, this might be in a different location but you'll likely have a <code>.ssh</code> folder somewhere. For instance, the path to mine is <code>C:\Users\{my username}\.ssh\config</code>. Whether you can find it in your file explorer or not, you'll be able to edit your config file in VS Code. Detailed instructions are on the <a href="https://bjsilver.github.io/bag_wiki/docs/remote_access/vscode.html">BAG Wiki</a> if you get stuck, but in short:</p>
 <ol type="a">
   <li>open the command pallete using <code>Ctrl</code>+<code>Shift</code>+<code>P</code>.</li>
   <li>search for "Remote - SSH". An option to open a config file should appear.</li>
-  <img src="assets/open_config.png" width="500">
+</ol>
+<p><img src="assets/open_config.png" alt="png" width="600"/></p>
+<ol type="a"> 
   <li>Specify connections to at least a foe-linux server and additionally to a machine on foe-linux (silloth, lytham, uptonpark, etc.) by copying the text below. </li>
   <li>Save the config file, close VS Code and reopen.</li>
 </ol>
@@ -312,19 +309,34 @@ Host foe-cpu
 <h3 id="4-ssh-into-remote-machine">4) ssh into remote machine</h3>
 <ol type="a">
   <li>ssh-ing</li>
-  <p>Go to the Remote Explorer side pannel on the left. The host names you added to your config file should be listed under SSH. Connect to one of them. Depending on the connection, you may be prompted to enter your password multiple times. You may also be required to select the operating system of the machine you are connecting to (linux) and dismiss some popups.</p><img src="assets/ssh_tunnel.png" width="500">
+  <p>Go to the Remote Explorer side pannel on the left. The host names you added to your config file should be listed under SSH. Connect to one of them. Depending on the connection, you may be prompted to enter your password multiple times. You may also be required to select the operating system of the machine you are connecting to (linux) and dismiss some popups.
+</ol>
+
+<p><img src="assets/ssh_tunnel.png" alt="png" width="600"/>  </p>
+<ol type="a">
   <li>Connected!</li>
-  <p>You should land in the remote machine with a page that looks something like the one below. Note the box in the bottom left which should display the name of the host you are connected to.</p><img src="assets/shh_welcome.png" width="500">
+  <p>You should land in the remote machine with a page that looks something like the one below. Note the box in the bottom left which should display the name of the host you are connected to.![png](assets/ssh_welcome.png)
   <li>Install Extensions</li>
   <p>Install the same extensions you installed in step 2b on the remote machine, again by navigating to the extensions side tab.</p>
   <li>Open project directory</li>
-  <p>From here you can open the directory for your coding project, allowing you to view and navigate all files in your project! Open the Explorer side pannel on the left and click Open Folder. You can then navigate to a project directory of your choice. You will need to inseret your password again as the connection reestablishes from the new directory. If you don't already have a folder, you can create one in the terminal (accessed via VS Code through View > Terminal or Terminal > New Terminal).</p><img src="assets/open_folder.png" width="500">
-  <li>Closing the connection</li>
-  <p>Once you're finished, remember to save all documents and close the remote connection. To do this, click the SHH block in the bottom left, then choose "Close Remote Connection".</p><img src="assets/close_connection.png" width="500">
-  <li>Shortcut for next time</li>
-  <p>The next time you connect, you can connect directly to the folder you opened on the remote machine, without having to open the project folder and re-input your passwords! In the image below, VS Code has remembered me connecting to my <code>project_wetland</code> folder via uptonpark, and I can click either one to connect directly to that folder.</p><img src="assets/shortcut.png" width="500">
+  <p>From here you can open the directory for your coding project, allowing you to view and navigate all files in your project! Open the Explorer side pannel on the left and click Open Folder. You can then navigate to a project directory of your choice. You will need to inseret your password again as the connection reestablishes from the new directory. If you don't already have a folder, you can create one in the terminal (accessed via VS Code through View > Terminal or Terminal > New Terminal).
 </ol>
 
+<p><img src="assets/open_folder.png" alt="png" width="600"/></p>
+<ol type="a">      
+  <li>Closing the connection</li>
+  <p>Once you're finished, remember to save all documents and close the remote connection. To do this, click the SHH block in the bottom left, then choose "Close Remote Connection".
+</ol>
+
+<pre><code>
+</code></pre>
+<p><img src="assets/close_connection.png" alt="png" width="600"/>      </p>
+<ol type="a">  
+  <li>Shortcut for next time</li>
+  <p>The next time you connect, you can connect directly to the folder you opened on the remote machine, without having to open the project folder and re-input your passwords! In the image below, VS Code has remembered me connecting to my <code>project_wetland</code> folder via uptonpark, and I can click either one to connect directly to that folder.
+</ol>
+
+<p><img src="assets/shortcut.png" alt="png" width="600"/>      </p>
 <h3 id="5-set-up-an-environment-manager">5) Set up an environment manager</h3>
 <p>Now you need to install an environment manager on the machine you want to code on. You use this to create virtual environments and install libraries. If you encounter dependency problems within your environment, you can easily create a new one and install a new set of libraries there. You need to set this up wherever you do your coding, so ideally on a disk in foe-linux (<strong>NOT</strong> your home directory as you won't have enough space). It's good practice to create a new environment for each project.</p>
 <p>There are a couple of options to choose from. I have found that Miniforge works best for Linux machines, as it installs packages via conda-forge by default, making it faster and more reliable than other methods. However, I have had problems installing it locally on my university Windows laptop as it gets flagged as malware by the IT security. Miniconda is a good alternative for local work on university Windows computers.</p>
