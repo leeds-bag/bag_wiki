@@ -105,9 +105,9 @@ It is currently recommended to choose option 1, but all researchers will eventua
     <li>Personal computer</li>
       <p>Go to the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">University of Leeds VPN guide</a>. Under attachments to the right of the screen, there is a list of VPN versions you can download. Select the appropriate download for your operating system and follow the setup wizard instructions.    
   </ol>
-  
-  <img src="assets/PulseSecure_download.png" alt="png" width="600"/>
-  
+
+  ![png](assets/PulseSecure_download.png)
+
   <li>Once you have the VPN installed, follow the instructions on the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">VPN guide</a>, which detail how to connect.</li>
 </ol>
 
@@ -134,11 +134,10 @@ It is currently recommended to choose option 1, but all researchers will eventua
       <li>Remote SSH (no downgrade necessary, as far as we know!)</li>
     </ol>
     
-    
-    
 </ol>
 
-<img src="assets/VSCode_extensions.png" alt="png" width="600"/>
+![png](assets/VSCode_extensions.png)
+<!-- <img src="assets/VSCode_extensions.png" alt="png" width="600"/> -->
 
 ### 3) config file
 
@@ -148,7 +147,10 @@ To ssh easily into remote machines like foe-linux, it's easiest to create a conf
   <li>open the command pallete using <code>Ctrl</code>+<code>Shift</code>+<code>P</code>.</li>
   <li>search for "Remote - SSH". An option to open a config file should appear.</li>
 </ol>
-<img src="assets/open_config.png" alt="png" width="600"/>
+
+![png](assets/open_config.png)
+<!-- <img src="assets/open_config.png" alt="png" width="600"/> -->
+
 <ol type="a"> 
   <li>Specify connections to at least a foe-linux server and additionally to a machine on foe-linux (silloth, lytham, uptonpark, etc.) by copying the text below. </li>
   <li>Save the config file, close VS Code and reopen.</li>
@@ -227,7 +229,8 @@ Notes:
   <p>Go to the Remote Explorer side pannel on the left. The host names you added to your config file should be listed under SSH. Connect to one of them. Depending on the connection, you may be prompted to enter your password multiple times. You may also be required to select the operating system of the machine you are connecting to (linux) and dismiss some popups.
 </ol>
 
-<img src="assets/ssh_tunnel.png" alt="png" width="600"/>  
+![png](assets/ssh_tunnel.png)
+<!-- <img src="assets/ssh_tunnel.png" alt="png" width="600"/>   -->
 
 <ol type="a">
   <li>Connected!</li>
@@ -238,21 +241,24 @@ Notes:
   <p>From here you can open the directory for your coding project, allowing you to view and navigate all files in your project! Open the Explorer side pannel on the left and click Open Folder. You can then navigate to a project directory of your choice. You will need to inseret your password again as the connection reestablishes from the new directory. If you don't already have a folder, you can create one in the terminal (accessed via VS Code through View > Terminal or Terminal > New Terminal).
 </ol>
 
-<img src="assets/open_folder.png" alt="png" width="600"/>
+![png](assets/open_folder.png)
+<!-- <img src="assets/open_folder.png" alt="png" width="600"/> -->
 
 <ol type="a">      
   <li>Closing the connection</li>
   <p>Once you're finished, remember to save all documents and close the remote connection. To do this, click the SHH block in the bottom left, then choose "Close Remote Connection".
 </ol>     
 
-<img src="assets/close_connection.png" alt="png" width="600"/>      
+![png](assets/close_connection.png)
+<!-- <img src="assets/close_connection.png" alt="png" width="600"/>       -->
     
 <ol type="a">  
   <li>Shortcut for next time</li>
   <p>The next time you connect, you can connect directly to the folder you opened on the remote machine, without having to open the project folder and re-input your passwords! In the image below, VS Code has remembered me connecting to my <code>project_wetland</code> folder via uptonpark, and I can click either one to connect directly to that folder.
 </ol>
 
-<img src="assets/shortcut.png" alt="png" width="600"/>      
+![png](assets/shortcut.png)
+<!-- <img src="assets/shortcut.png" alt="png" width="600"/>       -->
 
 ### 5) Set up an environment manager
 
