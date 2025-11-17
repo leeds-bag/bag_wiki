@@ -25,10 +25,12 @@ Throughout, I draw upon the expertise shared in the following sources:
 
 ### Python
 
-<figure>
+![png](assets/python_antigravity.png)
+
+<!-- <figure>
     <img src="/assets/python_antigravity.png" width="500" alt="python import antigravity comic by xkcd">
     <figcaption>The benefits of Python. From <a href="https://xkcd.com/353" target="_blank">xkcd.com</a> by Randall Munroe </figcaption>
-</figure>
+</figure> -->
 
 Python is one of the most successful programming languages, and for a reason! It values *readability* above all else, making it very user-friendly.
 It is open-source and primarily relies on importing libraries others have created to solve problems efficiently. This means you can lean on the
@@ -38,10 +40,12 @@ Many people start using Python via the Python-provided Integrated Development En
 places to get to grips with Python when first learning the language, as they allow you to focus on the basic coding you'll encounter in tutorials.
 Complications arise when you want to do more than the basics, though.
 
-<figure>
+![png](assets/Python_IDE.png)
+
+<!-- <figure>
     <img src="assets/Python_IDE.png" width="500" alt="Python IDE">
     <figcaption>Bog standard Python IDE, perfect as a learning sandbox but not much else</figcaption>
-</figure>
+</figure> -->
 
 ### Environment Managers
 
