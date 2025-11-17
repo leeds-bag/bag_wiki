@@ -258,7 +258,7 @@ results.T.plot.bar(grid=True, xlabel='chunksize', ylabel='time (seconds)',
 ```
 
 
-![png](dask_demo_files/dask_demo_18_1.png)
+![png](assets/dask_demo_18_1.png)
     
 
 In this case the optimum chunksize seems to be around 64. The chunking time does not seem to vary much, but the calculation time does.
@@ -295,7 +295,7 @@ results.T.plot.bar(grid=True, xlabel='chunksize', ylabel='time (seconds)',
                    stacked=True)
 ```
     
-![png](dask_demo_files/dask_demo_20_1.png)
+![png](assets/dask_demo_20_1.png)
     
 
 
@@ -334,7 +334,7 @@ results.T.plot.bar(grid=True, xlabel='chunksize', ylabel='time (seconds)',
                    stacked=True)
 ```
     
-![png](dask_demo_files/dask_demo_22_2.png)
+![png](assets/dask_demo_22_2.png)
     
 
 
