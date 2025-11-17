@@ -202,7 +202,7 @@ version 1.98 of VS Code to enable use. The new machines are, as of 06/10/2025, n
       <p>Go to the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">University of Leeds VPN guide</a>. Under attachments to the right of the screen, there is a list of VPN versions you can download. Select the appropriate download for your operating system and follow the setup wizard instructions.    
   </ol>
 
-  <img src="assets/PulseSecure_download.png" alt="png" width="600"/>
+  ![png](assets/PulseSecure_download.png)
 
   <li>Once you have the VPN installed, follow the instructions on the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">VPN guide</a>, which detail how to connect.</li>
 </ol>
@@ -228,18 +228,21 @@ version 1.98 of VS Code to enable use. The new machines are, as of 06/10/2025, n
       <li>Remote SSH (no downgrade necessary, as far as we know!)</li>
     </ol>
 
-
-
 </ol>
 
-<p><img src="assets/VSCode_extensions.png" alt="png" width="600"/></p>
+<p><img alt="png" src="../assets/VSCode_extensions.png" /></p>
+<!-- <img src="assets/VSCode_extensions.png" alt="png" width="600"/> -->
+
 <h3 id="3-config-file">3) config file</h3>
 <p>To ssh easily into remote machines like foe-linux, it's easiest to create a config file containing the details of the ssh connections you want to make. This is a file called <code>config</code> stored in the <code>.ssh</code> folder of your local machine. For linux users, the full path location will simply be <code>~/.ssh/config</code>. For Windows users, this might be in a different location but you'll likely have a <code>.ssh</code> folder somewhere. For instance, the path to mine is <code>C:\Users\{my username}\.ssh\config</code>. Whether you can find it in your file explorer or not, you'll be able to edit your config file in VS Code. Detailed instructions are on the <a href="https://bjsilver.github.io/bag_wiki/docs/remote_access/vscode.html">BAG Wiki</a> if you get stuck, but in short:</p>
 <ol type="a">
   <li>open the command pallete using <code>Ctrl</code>+<code>Shift</code>+<code>P</code>.</li>
   <li>search for "Remote - SSH". An option to open a config file should appear.</li>
 </ol>
-<p><img src="assets/open_config.png" alt="png" width="600"/></p>
+
+<p><img alt="png" src="../assets/open_config.png" /></p>
+<!-- <img src="assets/open_config.png" alt="png" width="600"/> -->
+
 <ol type="a"> 
   <li>Specify connections to at least a foe-linux server and additionally to a machine on foe-linux (silloth, lytham, uptonpark, etc.) by copying the text below. </li>
   <li>Save the config file, close VS Code and reopen.</li>
@@ -312,7 +315,9 @@ Host foe-cpu
   <p>Go to the Remote Explorer side pannel on the left. The host names you added to your config file should be listed under SSH. Connect to one of them. Depending on the connection, you may be prompted to enter your password multiple times. You may also be required to select the operating system of the machine you are connecting to (linux) and dismiss some popups.
 </ol>
 
-<p><img src="assets/ssh_tunnel.png" alt="png" width="600"/>  </p>
+<p><img alt="png" src="../assets/ssh_tunnel.png" /></p>
+<!-- <img src="assets/ssh_tunnel.png" alt="png" width="600"/>   -->
+
 <ol type="a">
   <li>Connected!</li>
   <p>You should land in the remote machine with a page that looks something like the one below. Note the box in the bottom left which should display the name of the host you are connected to.![png](assets/ssh_welcome.png)
@@ -322,7 +327,9 @@ Host foe-cpu
   <p>From here you can open the directory for your coding project, allowing you to view and navigate all files in your project! Open the Explorer side pannel on the left and click Open Folder. You can then navigate to a project directory of your choice. You will need to inseret your password again as the connection reestablishes from the new directory. If you don't already have a folder, you can create one in the terminal (accessed via VS Code through View > Terminal or Terminal > New Terminal).
 </ol>
 
-<p><img src="assets/open_folder.png" alt="png" width="600"/></p>
+<p><img alt="png" src="../assets/open_folder.png" /></p>
+<!-- <img src="assets/open_folder.png" alt="png" width="600"/> -->
+
 <ol type="a">      
   <li>Closing the connection</li>
   <p>Once you're finished, remember to save all documents and close the remote connection. To do this, click the SHH block in the bottom left, then choose "Close Remote Connection".
@@ -330,13 +337,17 @@ Host foe-cpu
 
 <pre><code>
 </code></pre>
-<p><img src="assets/close_connection.png" alt="png" width="600"/>      </p>
+<p><img alt="png" src="../assets/close_connection.png" /></p>
+<!-- <img src="assets/close_connection.png" alt="png" width="600"/>       -->
+
 <ol type="a">  
   <li>Shortcut for next time</li>
   <p>The next time you connect, you can connect directly to the folder you opened on the remote machine, without having to open the project folder and re-input your passwords! In the image below, VS Code has remembered me connecting to my <code>project_wetland</code> folder via uptonpark, and I can click either one to connect directly to that folder.
 </ol>
 
-<p><img src="assets/shortcut.png" alt="png" width="600"/>      </p>
+<p><img alt="png" src="../assets/shortcut.png" /></p>
+<!-- <img src="assets/shortcut.png" alt="png" width="600"/>       -->
+
 <h3 id="5-set-up-an-environment-manager">5) Set up an environment manager</h3>
 <p>Now you need to install an environment manager on the machine you want to code on. You use this to create virtual environments and install libraries. If you encounter dependency problems within your environment, you can easily create a new one and install a new set of libraries there. You need to set this up wherever you do your coding, so ideally on a disk in foe-linux (<strong>NOT</strong> your home directory as you won't have enough space). It's good practice to create a new environment for each project.</p>
 <p>There are a couple of options to choose from. I have found that Miniforge works best for Linux machines, as it installs packages via conda-forge by default, making it faster and more reliable than other methods. However, I have had problems installing it locally on my university Windows laptop as it gets flagged as malware by the IT security. Miniconda is a good alternative for local work on university Windows computers.</p>
