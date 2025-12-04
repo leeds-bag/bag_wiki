@@ -18,6 +18,7 @@ nav:
       - Regridding with Python: how_to_regrid_xesmf_tutorial.md
       - Speedy Python with Dask: dask_demo.md
       - Printing A1: printing.md
+      - Using Globus: globus.md
       
 
 plugins:
