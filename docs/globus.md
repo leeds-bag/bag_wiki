@@ -76,7 +76,7 @@ cd globusconnectpersonal-x.y.z
 
   <li>If you are continuing through the terminal shell, then a URL will appear. Copy this into a browser. You can change the label of the collection if you want. Hit Allow. If you are not using the terminal shell, a browser window will pop up. Follow the instructions and skip Step 6 below.</li>
 
-![](assets/globus4.png)
+  ![](assets/globus4.png)
 
   <li>Copy the provided Authorization Code, then paste into your terminal window where it says 'Enter the auth code:'</li>
   <li>When prompted, enter the name you want to call this personal endpoint. It should be descriptive to the collection, so you don't confuse different collections on different computers.</li>
