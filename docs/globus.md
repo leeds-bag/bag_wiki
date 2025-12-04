@@ -22,18 +22,18 @@ You can create a personal collection (GCP collection) on one computer and transf
 You cannot share data from a GCP collection to another GCP collection without a paid subscription. 
 The best option is to transfer the data from your GCP collection somewhere to Aire using the Aire endpoint, then transfer from Aire to another GCP collection.
 
-![](docs/assets/globus1.png)
+![](assets/globus1.png)
 
 ### How do I use the Aire Globus Endpoint?
 
 All of Globus, both GCS and GCP collections, are accessible through the online portal. Go to Globus.org and log in using the University of Leeds organization login (continue and allow when prompted). This will take you to the Globus online File Manager.
 
-![](docs/assets/globus2.png)
+![](assets/globus2.png)
 
 To access the Aire Home and Scratch Directories -- Experimental GCS collection, type ‘Aire’ into the search bar next to Collection at the top of the screen. 
 The Aire Home and Scratch Directories collection should be the top find. You can click on this, and the /mnt and /scratch directories should appear in your File Manager panel. 
 
-![](docs/assets/globus3.png)
+![](assets/globus3.png)
 
 **Note**: currently this endpoint is experimental (hence the name) and experiences frequent timeouts. While frustrating, the endpoint does work. Just keep refreshing if necessary. 
 
@@ -76,7 +76,7 @@ cd globusconnectpersonal-x.y.z
 
   <li>If you are continuing through the terminal shell, then a URL will appear. Copy this into a browser. You can change the label of the collection if you want. Hit Allow. If you are not using the terminal shell, a browser window will pop up. Follow the instructions and skip Step 6 below.</li>
 
-![](docs/assets/globus4.png)
+![](assets/globus4.png)
 
   <li>Copy the provided Authorization Code, then paste into your terminal window where it says 'Enter the auth code:'</li>
   <li>When prompted, enter the name you want to call this personal endpoint. It should be descriptive to the collection, so you don't confuse different collections on different computers.</li>
@@ -112,7 +112,7 @@ Once you've installed Globus Connect Personal on your personal computer or a rem
     Go back and create a GCP collection on the server/computer of your choice. Find the Aire Home Scratch Directories -- Experimental collection.</li>
   <li>Some collections will appear green and have STATUS = ready. Others will be red and have STATUS = offline. To change the status of a personal collection from offline to ready, log in to the computer with the registered personal collection.</li>
 
-![](docs/assets/globus5.png)
+![](assets/globus5.png)
 
   <li>Move to the globusconnectpersonal-x.y.z directory.</li>
   
@@ -134,7 +134,7 @@ The & keeps the session running in the background.
     This collection must either be a subscribed GCP or a GCS collection. To test the tranfer process, you can use Aire Home and Scratch Directories - Experimental.</li>
   <li>Select the file(s) you want to transfer from one collection. Click the Start button on the side with the files you selected for transfer.</li>
 
-![](docs/assets/globus6.png)
+![](assets/globus6.png)
 
   <li>Once the transfer has started, a window will appear in the top right of the screen letting you know the transfer has successfully started. If something goes wrong, another window will pop up to alert you. 
     You can also check the status of a transfer by clicking on Activity on the left-hand menu. 
