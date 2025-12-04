@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Mounting onedrive - Leeds BAG Wiki</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Mounting onedrive";
+        var mkdocs_page_input_path = "mounting_onedrive.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Leeds BAG Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../python_quick_start/">Python Quick Start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VSCode_guide/">Using VSCode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../conda_setup/">Mamba Set Up</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../how_to_regrid_xesmf_tutorial/">Regridding with Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dask_demo/">Speedy Python with Dask</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../printing/">Printing A1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../globus/">Using Globus</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Leeds BAG Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Mounting onedrive</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/mounting_onedrive.md">Edit on leeds-bag/bag_wiki</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="mounting-onedrive-on-a-linux-system">Mounting OneDrive on a Linux system</h2>
+<p><em>Contributors: Ben Silver</em></p>
+<p>Your University of Leeds OneDrive can be 'mounted' in Linux, so the files on
+it can be accessed (almost) as if it was any other directory.</p>
+<p>I find this useful for synchronising scripts and figures across machines. 
+For example, if you are working on a Linux machine, and you save a figure 
+to OneDrive, it will be available (almost) instantly to copy into powerpoint
+if you're also working on a Windows machine.</p>
+<p>Also useful for if you're running scripts on a remote machine, you can edit
+the script locally, your changes will be automatically synchronised with 
+the remote machine.</p>
+<h3 id="do-i-need-to-mount-onedrive">Do I need to 'mount' OneDrive?</h3>
+<p>Please note that mounting OneDrive in this way is only necessary if you are on a Linux
+machine (e.g. <code>foe-linux</code>). If you are in MobaXterm or on WSL, you can just 
+'soft link' OneDrive so it can be easily accessed from your Linux home directory.</p>
+<p>OneDrive can usually be found at <code>C:\Users\[USERNAME]\OneDrive - University of Leeds</code>
+or similar</p>
+<h3 id="1-rclone">1. RClone</h3>
+<p>The first step is to use RClone to setup OneDrive. This step makes it accessible
+on Linux using the <code>rclone</code> command but does not mount it. For this step, <a href="https://it.leeds.ac.uk/it?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=5cdadc241bb1c950ba670ed0f54bcb04">use the guide 
+IT have written</a> 
+for how to set it up on ARC.</p>
+<p>{: .important-title }</p>
+<blockquote>
+<p>Authentication issues</p>
+<p>If the authentication step (where a browser window pops up for you to login) fails because you are doing it on a remote machine, try following the guidance in the <em>If launching the remote browser does not work</em> section of IT's guide, or using X2Go.</p>
+</blockquote>
+<h3 id="2-mount-automatically">2. Mount automatically</h3>
+<p>{: .important-title }</p>
+<blockquote>
+<p>Guide updated!</p>
+<p>Richard Rigby recommends we don't mount OneDrive in our home directory since it's a networked drive. We can mount it on <code>/dev/shm</code> instead</p>
+</blockquote>
+<p>To mount it automatically each time you login on a Linux machine, create a directory here:<code>/dev/shm/OneDrive-$USER</code>, and add the
+following code to your <code>~/.bashrc</code> file:</p>
+<pre><code class="language-bash"># Automatically mount OneDrive with rclone
+MOUNT_POINT=&quot;/dev/shm/OneDrive-$USER&quot;
+RCLONE_REMOTE=&quot;onedrive&quot; # the name that you gave onedrive when setting up with rclone
+RCLONE_COMMAND=&quot;rclone mount $RCLONE_REMOTE: $MOUNT_POINT --vfs-cache-mode writes --daemon&quot;
+
+# Function to check and mount OneDrive
+mount_onedrive() {
+  if mountpoint -q &quot;$MOUNT_POINT&quot;; then
+    :
+  else
+    echo &quot;Mounting OneDrive...&quot;
+    fusermount -uz &quot;$MOUNT_POINT&quot; 2&gt;/dev/null  # Attempt to unmount if needed
+    $RCLONE_COMMAND
+  fi
+}
+
+# Call the function to mount OneDrive
+mount_onedrive
+</code></pre>
+<p>{: .warning }</p>
+<blockquote>
+<p>You will have to create the <code>/dev/shm/OneDrive-$USER</code> on each of the remote machines you plan to use (e.g. <code>foe-linux-01</code>, <code>foe-linux-02</code>, <code>viper</code> etc.)</p>
+</blockquote>
+<p>Finally, create a soft link to <code>/dev/shm/OneDrive-$USER</code> in your home directory so you can easily access OneDrive from there, e.g.</p>
+<pre><code class="language-bash">ln -s /dev/shm/OneDrive-$USER ~/onedrive
+</code></pre>
+<p>This step only needs to be done once (you don't have to do it for each remote machine)</p>
+<p>Once you login and logout, this should work! and you should find <code>onedrive</code>
+in your home directory</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/leeds-bag/bag_wiki" class="fa fa-code-fork" style="color: #fcfcfc"> leeds-bag/bag_wiki</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
