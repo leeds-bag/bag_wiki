@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Guide to using Globus - Leeds BAG Wiki</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Guide to using Globus";
+        var mkdocs_page_input_path = "globus.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Leeds BAG Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../python_quick_start/">Python Quick Start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VSCode_guide/">Using VSCode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../conda_setup/">Mamba Set Up</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../how_to_regrid_xesmf_tutorial/">Regridding with Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dask_demo/">Speedy Python with Dask</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../printing/">Printing A1</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Leeds BAG Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Guide to using Globus</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/globus.md">Edit on leeds-bag/bag_wiki</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="guide-to-using-globus">Guide to using Globus</h1>
+<p>by Alicia, 04/12/2025
+(last updated 04/12/2025)</p>
+<h3 id="what-is-globus">What is Globus?</h3>
+<p>Globus is an online platform for research data management and transfer. You can use Globus to move, share, and access large datasets from different collaborators regardless of institutions or storage systems if they also have Globus.
+You may also be able to use Globus to move your own data from different storage systems, but this requires a subscription (and approval from UoL IT).</p>
+<h3 id="what-types-of-globus-are-there">What types of Globus are there?</h3>
+<p><b>Globus Connect Personal (GCP)</b> - install on your personal computer or in your home directory on a remote machine. You can then set the data directory for transfer (called a collection). 
+Globus Connect Personal is useful to set up on foe-linux-cpu, for example, and set the collection as a directory on one of the mounted disks, such as p0106.</p>
+<p><b>Globus Connect Server (GCS)</b> - installed by research IT on an HPC and allows for data transfer of multiple users on the same system without installation of individual Globus Connect Personal accounts. 
+On Aire, the Globus Connect Server endpoint is called Aire Globus Endpoint and the named collection is called Aire Home and Scratch Directories--Experimental. You don't have to install anything on Aire to use it, just log in to Globus.org to open the connection.</p>
+<h3 id="how-does-this-work">How does this work?</h3>
+<p>You can create a personal collection (GCP collection) on one computer and transfer data from another GCP collection or from a server endpoint collection (GCS collection). 
+You cannot share data from a GCP collection to another GCP collection without a paid subscription. 
+The best option is to transfer the data from your GCP collection somewhere to Aire using the Aire endpoint, then transfer from Aire to another GCP collection.</p>
+<p><img alt="" src="../assets/globus1.png" /></p>
+<h3 id="how-do-i-use-the-aire-globus-endpoint">How do I use the Aire Globus Endpoint?</h3>
+<p>All of Globus, both GCS and GCP collections, are accessible through the online portal. Go to Globus.org and log in using the University of Leeds organization login (continue and allow when prompted). This will take you to the Globus online File Manager.</p>
+<p><img alt="" src="../assets/globus2.png" /></p>
+<p>To access the Aire Home and Scratch Directories -- Experimental GCS collection, type ‘Aire’ into the search bar next to Collection at the top of the screen. 
+The Aire Home and Scratch Directories collection should be the top find. You can click on this, and the /mnt and /scratch directories should appear in your File Manager panel. </p>
+<p><img alt="" src="../assets/globus3.png" /></p>
+<p><strong>Note</strong>: currently this endpoint is experimental (hence the name) and experiences frequent timeouts. While frustrating, the endpoint does work. Just keep refreshing if necessary. </p>
+<p>To find your data on Aire, type the path to your data in scratch in the Path bar in the File Manager and hit enter.</p>
+<p>You can delete, copy, move, and rename any files or directories in your scratch space on Aire. You can also move files from this scratch space to a GCP collection somewhere. To do this, set up Globus Connect Personal on a personal computer or home directory of a remote server (instructions below), then search for that collection in the second Collections search bar.</p>
+<h3 id="how-do-i-set-up-globus-personal">How do I set up Globus personal?</h3>
+<p>Installation of Globus Connect Personal is easy on most remote machines. HOWEVER, foe-linux-cpu is currently not set up correctly to register your GCP collection.</p>
+<ol>
+  <li>Move to your home directory.</li>
+
+
+<pre><code class="language-bash">cd \$HOME
+</code></pre>
+
+
+  <li>Download Globus Connect Personal and extract the tarball.</li>
+
+
+<pre><code class="language-bash">wget &lt;https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz&gt;
+</code></pre>
+
+
+
+<pre><code class="language-bash">tar xvf globusconnectpersonal-latest.tgz
+</code></pre>
+
+
+  <li>The extracted directory will have a version number such as globusconnectpersonal-x.y.z. Move to this directory.</li>
+
+
+<pre><code class="language-bash">cd globusconnectpersonal-x.y.z
+</code></pre>
+
+
+  <li>Set up Globus Connect Personal. You can do this with a pop-up window or entirely through the terminal shell. If you want to use the pop-up window, remove --no-gui from the code below.</li>
+
+
+<pre><code class="language-bash">./globusconnectpersonal -setup --no-gui
+</code></pre>
+
+
+  <li>If you are continuing through the terminal shell, then a URL will appear. Copy this into a browser. You can change the label of the collection if you want. Hit Allow. If you are not using the terminal shell, a browser window will pop up. Follow the instructions and skip Step 6 below.</li>
+
+![](assets/globus4.png)
+
+  <li>Copy the provided Authorization Code, then paste into your terminal window where it says 'Enter the auth code:'</li>
+  <li>When prompted, enter the name you want to call this personal endpoint. It should be descriptive to the collection, so you don't confuse different collections on different computers.</li>
+  <li>Globus will set things up. Once finished with the registration and set-up, you'll get a 'Success' message in terminal, and you should be able to find the collection in your File Manager on Globus.org.</li>
+  <li>If the registration and set-up take too long (over a minute to load), then there are likely firewall or system issues blocking the registration. This is the current situation on foe-linux-cpu. For UoL computers, log an IT ticket with the problem.</li>
+  <li>Once Globus Connect Personal is installed and registered, you can set the path to the directory you want to use as the collection endpoint. Open the .globusonline/lta/config-paths file or create a new file if it does not exist yet.</li>
+
+
+<pre><code class="language-bash">vi .globusonline/lta/config-paths
+</code></pre>
+
+
+  <li>If the file already exists, it will have ~/,0,1 as the top line. This information lists the sharing (0 - no sharing) and read/write (1 - yes read and write) access of files in the home directory (~/). Modify the file so the top line includes the path to the directory you want to use as a collection endpoint. For example, if you want this to be in your directory on p0106, add the following as the first line of the file.</li>
+
+
+<pre><code class="language-bash">/uolstore/RIT/RITCore/Env/p0106/Users/yourusername/,0,1
+</code></pre>
+
+
+Because this is a Globus Connect Personal account without a paid subscription, you can't share out of this directory (first digit must be 0) unless you are connecting to another paid subscription personal collection or to a Globus Connect Server account such as on Aire.
+
+  <li>Save the changes to the config-paths file. You are now ready to use this collection.</li>
+
+</ol>
+
+<h3 id="how-do-i-use-globus-connect-personal-to-move-data">How do I use Globus Connect Personal to move data?</h3>
+<p>Once you've installed Globus Connect Personal on your personal computer or a remote server somewhere, you can find the collection on Globus.org.</p>
+<ol>
+
+  <li>Go to Globus.org and log in through the University of Leeds account.</li>
+  <li>On the left-hand menu, find Collections. Click this button.</li>
+  <li>The Collections page will show a list of all collections you have access to. If you have not yet created a personal collection or accessed the Aire Home and Scratch Directories -Experimental collection, nothing will appear here. 
+    Go back and create a GCP collection on the server/computer of your choice. Find the Aire Home Scratch Directories -- Experimental collection.</li>
+  <li>Some collections will appear green and have STATUS = ready. Others will be red and have STATUS = offline. To change the status of a personal collection from offline to ready, log in to the computer with the registered personal collection.</li>
+
+![](assets/globus5.png)
+
+  <li>Move to the globusconnectpersonal-x.y.z directory.</li>
+
+
+<pre><code class="language-bash">cd globusconnectpersonal-x.y.z
+</code></pre>
+
+
+  <li>Start the personal collection session.</li>
+
+
+<pre><code class="language-bash">./globusconnectpersonal -start &amp;
+</code></pre>
+
+
+The & keeps the session running in the background.
+
+  <li>Return to the Globus.org File Manager. On the File Manager screen, in the collection window, search for the personal collection you just activated. It might take a few moments for Globus.org to register that the collection is active and ready.</li>
+  <li>Once the collection is loaded in File Manager, you can move, delete, and rename existing files. You can also create a new directory.</li>
+  <li>To share or transfer data, find another collection in the second Collection search bar on the File Manager page. 
+    This collection must either be a subscribed GCP or a GCS collection. To test the tranfer process, you can use Aire Home and Scratch Directories - Experimental.</li>
+  <li>Select the file(s) you want to transfer from one collection. Click the Start button on the side with the files you selected for transfer.</li>
+
+![](assets/globus6.png)
+
+  <li>Once the transfer has started, a window will appear in the top right of the screen letting you know the transfer has successfully started. If something goes wrong, another window will pop up to alert you. 
+    You can also check the status of a transfer by clicking on Activity on the left-hand menu. 
+    The Aire Home and Scratch Directories - Experimental collection experiences frequent timeouts but will restart the transfer automatically unless you terminate the process.</li>
+  <li>A green check will appear next to completed transfers, and you will get an email alert. You can then refresh list on the File Manager page for the collection you moved the data to, to see the successful transfer.</li>
+  <li>Once you have completed all the transfers, you can logout of Globus.org and shut down the GCP collection by typing in the command line.</li>
+
+
+<pre><code class="language-bash">./globusconnectpersonal -stop
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/leeds-bag/bag_wiki" class="fa fa-code-fork" style="color: #fcfcfc"> leeds-bag/bag_wiki</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
