@@ -53,8 +53,10 @@
 - Very important to get right—many readers will just read this
 - One idea/result per sentence.
 - Make sure it has the key messages/results.
-- Nature summary guidelines are useful (nature-summary-paragraph.pdf):
+- Nature summary guidelines are useful (see below):
   - Basic introduction (a few sentences), problem addressed (1 sentence), what you did (1 sentence), Main results (a few sentences), broader context (a few sentences)
+    
+![taken from: https://www.nature.com/documents/nature-summary-paragraph.pdf](assets/nature_summary.png)
 
 ### Introduction
 - Short and focused is best for most papers
@@ -76,7 +78,7 @@
 - Important to compare to previous work. Puts your results in context.
 
 ### Limitations
-- Don’t get obsessed with limitations (keep flagellation for outside work).
+- Don’t get obsessed with limitations!
 - Turn perceived weaknesses/limitations into strengths. Identify and adapt and update methods to address (e.g., to account for uncertainty in dataset X, we tested an alternative dataset and found similar results).
 
 ### Figures and Tables
