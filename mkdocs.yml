@@ -19,6 +19,7 @@ nav:
       - Speedy Python with Dask: dask_demo.md
       - Printing A1: printing.md
       - Using Globus: globus.md
+      - Writing Academic Papers: paper_writing.md
       
 
 plugins:
