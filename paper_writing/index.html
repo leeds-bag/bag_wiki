@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Writing a Scientific Paper - Leeds BAG Wiki</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Writing a Scientific Paper";
+        var mkdocs_page_input_path = "paper_writing.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Leeds BAG Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../python_quick_start/">Python Quick Start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VSCode_guide/">Using VSCode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../conda_setup/">Mamba Set Up</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../how_to_regrid_xesmf_tutorial/">Regridding with Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dask_demo/">Speedy Python with Dask</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../printing/">Printing A1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../globus/">Using Globus</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Leeds BAG Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Writing a Scientific Paper</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/paper_writing.md">Edit on leeds-bag/bag_wiki</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="writing-a-scientific-paper">Writing a Scientific Paper</h1>
+<p><strong>Author:</strong> Dom Spracklen </p>
+<p><strong>Updated:</strong> Dec 2025</p>
+<p><strong>Acknowledgements:</strong> Everyone in BAG, Daniel Jacob (Harvard University)</p>
+<h2 id="what-and-why">What and Why</h2>
+<ul>
+<li>Scientific papers are the way we share our science with the world.</li>
+<li>A good scientific paper is:</li>
+<li>Original</li>
+<li>Interesting</li>
+<li>Useful</li>
+<li>Clear, replicable, and readable</li>
+<li>Your scientific papers are a way you get recognised for new ideas and build your profile as a researcher.</li>
+</ul>
+<h2 id="how-to-start">How to Start</h2>
+<ul>
+<li>Often the hardest bit.</li>
+<li>Start with an outline. Even writing a title, authors/institutions, and section headers can help overcome the blank page syndrome.</li>
+<li>Once you have an outline, start filling in sections you feel most confident with.</li>
+<li>Figures can help you structure results and decide narrative.</li>
+<li>Start writing early, don’t leave it to the end.</li>
+<li>Learn how and when you best write. Morning/evening? In short sessions or full days? With coffee/wine? Fight procrastination.</li>
+</ul>
+<h2 id="where-to-publish">Where to Publish</h2>
+<ul>
+<li>Early on, decide if writing a short (letters style) paper or a full-length paper.</li>
+<li>Look at the papers you are citing—where are they published? This can help decide where might be suitable. Often there are a few journals where we submit regularly (e.g., ACP, ERL, Ecological Solutions &amp; Applications).</li>
+<li>Nice to support scientific society journals (e.g., EGU, AGU, BES) who redirect some profits into science and education. Beware some predatory journals where standards are lower.</li>
+<li>Nature, Science, PNAS style journals for the big ideas. Rejection is normal and expected. Be ready to reformat and resubmit.</li>
+</ul>
+<h2 id="narrative">Narrative</h2>
+<ul>
+<li>Having a clear narrative is important. A figure “storyboard” can help.</li>
+<li>Try and work the narrative out early (it can and will change as you write).</li>
+<li>If something doesn’t help strengthen and clarify your narrative—why is it there? Is it needed?</li>
+<li>Make sure the narrative runs through the paper from Abstract, Introduction, Results, Figures, Discussion to Conclusion.</li>
+</ul>
+<h2 id="how-to-make-your-paper-useful">How to Make Your Paper Useful</h2>
+<ul>
+<li>Think about how people read your paper—most won’t read from start to finish. Make sure each reader can get the information they want:</li>
+<li><strong>The passing reader</strong> (reads title and possibly abstract): Clear title and abstract with key results</li>
+<li><strong>The more interested reader</strong> (reads title, abstract, figures, conclusions): Clear, self-contained figures that tell key messages</li>
+<li><strong>The dedicated reader</strong> (reads paper from start to finish): Sufficient detail and clarity, particularly around Methods.</li>
+<li>Think about what information your readers (other scientists, policy makers, stakeholders etc) might want from your paper. Make sure you provide these key numbers and results clearly &amp; easy to find.</li>
+<li>Think about key results. Repeat in Abstract, Results, Figures, Conclusions so all readers get the key messages. Repetition is good!</li>
+</ul>
+<h2 id="paper-structure">Paper Structure</h2>
+<ul>
+<li>Depends on journal</li>
+<li>Most will ask for Abstract, Introduction, Methods, Results, Discussion, Conclusions.</li>
+<li>Often relatively easy to adjust between different journal styles.</li>
+<li>Sometimes works to combine Results and Discussion. When separate, Results present findings without interpretation, Discussion interprets results in context of wider literature.</li>
+</ul>
+<h3 id="abstract">Abstract</h3>
+<ul>
+<li>Very important to get right—many readers will just read this</li>
+<li>One idea/result per sentence.</li>
+<li>Make sure it has the key messages/results.</li>
+<li>Nature summary guidelines are useful (nature-summary-paragraph.pdf):</li>
+<li>Basic introduction (a few sentences), problem addressed (1 sentence), what you did (1 sentence), Main results (a few sentences), broader context (a few sentences)</li>
+</ul>
+<h3 id="introduction">Introduction</h3>
+<ul>
+<li>Short and focused is best for most papers</li>
+<li>Focus on key information reader needs to understand your paper.</li>
+<li>You need to have a good knowledge of the literature. Use search engines and citation spider web. Go back to the literature throughout writing your paper. Nothing annoys a reader (or reviewer) more than omitting key (their!) papers.</li>
+<li>Good referencing also helps your paper be found by others. Cite yourself as appropriate</li>
+<li>Sometimes good to end introduction with a clear paragraph saying how your paper builds on the literature.</li>
+</ul>
+<h3 id="methods">Methods</h3>
+<ul>
+<li>Often an easy section to start writing, but a hard section to get right.</li>
+<li>Needs to be clear and concise but enough detail to make your work repeatable.</li>
+<li>Think about the key papers your work builds on. Did they provide sufficient information for your work? Think about the frustrating information they missed. Make sure you include.</li>
+</ul>
+<h3 id="results-and-discussion">Results and Discussion</h3>
+<ul>
+<li>Needs to be logical. Think about your narrative.</li>
+<li>Take the reader through the results in a logical and linear way. One idea/theme per paragraph. Keep paragraphs relatively short (5–10 sentences maybe). If you start to introduce a new theme, time for a new paragraph.</li>
+<li>Keep text as concise. You don’t need to describe everything in a figure or table. Your job is to highlight the important results.</li>
+<li>Often easiest to structure around your figures.</li>
+<li>Important to compare to previous work. Puts your results in context.</li>
+</ul>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>Don’t get obsessed with limitations (keep flagellation for outside work).</li>
+<li>Turn perceived weaknesses/limitations into strengths. Identify and adapt and update methods to address (e.g., to account for uncertainty in dataset X, we tested an alternative dataset and found similar results).</li>
+</ul>
+<h3 id="figures-and-tables">Figures and Tables</h3>
+<ul>
+<li>The figures tell your story and should be aligned with your overall narrative.</li>
+<li>Make sure the figures tell the key results. Cross check the Abstract, Figures, Results and Conclusion. Are there key results that aren’t visualised in a Figure?</li>
+<li>Figures need to be clear and visually attractive. Would you use the figure in a presentation? If not, try to improve.</li>
+<li>Make figures and tables useful—can readers get key results/numbers from tables and figures?</li>
+<li>Figure and caption should be “self contained”. Many readers will skip through the figures, they should be able to understand what you have done and the key results without having to read all the text. Better to have these details in figure caption rather than in text.</li>
+<li>Axis titles, legends, units need to be clear and in suitable font size. Think about how your figure is likely to appear in your paper. Avoid long and confusing experiment names (e.g., CMIP7_clm_tas_8, rename as something sensible)</li>
+</ul>
+<h3 id="conclusions">Conclusions</h3>
+<ul>
+<li>Key take home messages (like Abstract) but less limited by word count.</li>
+<li>Structure logically to take reader through the key messages. Often good to start with one concise paragraph to describe what you did and why. Then a paragraph for each key message in your paper.</li>
+<li>Remember many readers will skip straight to Conclusions—so make sure this is understandable to readers that haven’t read the whole paper</li>
+</ul>
+<h3 id="co-authors-acknowledgements-funding">Co-authors, Acknowledgements, Funding</h3>
+<ul>
+<li>Anyone who has done work for the paper or contributed important ideas should be a co-author. Anyone who has developed a new capability (e.g., new model) that underpins your work should be offered co-authorship. Acknowledgements can be for people who have helped in small ways that don’t warrant co-authorship.</li>
+<li>Many journals now ask you to describe how different co-authors have contributed. This can help with deciding the co-author list.</li>
+<li>First author is you! Senior author (i.e., PI or supervisor) often last or second. Other than this the order has little meaning. Can just be ordered alphabetical.</li>
+<li>Funding—the PI/supervisor will know what funding needs to be acknowledged.</li>
+</ul>
+<h2 id="final-checks">Final Checks</h2>
+<ul>
+<li>Make sure you use terms, units, acronyms, terminology consistently.</li>
+<li>Make sure Results reported consistently (i.e., same number in Abstract, Results and Conclusions)</li>
+<li>Keep sentences short. Active present form often best.</li>
+</ul>
+<h2 id="review-process">Review Process</h2>
+<ul>
+<li>Once you submit your paper, a journal editor will decide whether to pick up your paper for review. Some journals are more selective than others at this stage.</li>
+<li>The Editor then sends your paper to be reviewed by 2 or more independent reviewers (some journals allow you to recommend potential reviewers).</li>
+<li>Reviewers provide comments and advise the journal editor, who makes the final decision.</li>
+<li>Often you will be invited to resubmit, after responding to reviewer comments and revising your paper</li>
+</ul>
+<h2 id="responding-to-review">Responding to Review</h2>
+<ul>
+<li>Try (!) to be respectful of the reviewer who has given their time to review your work.</li>
+<li>Hard to take criticism of your work. Take time to reflect on comments and to see it from their perspective.</li>
+<li>Normally you resubmit a “Response to Review” and a Revised Manuscript.</li>
+<li>Response to Review goes through each reviewer comment in turn. Keep the response short, pleasant and positive. Don’t get dragged into long arguments.</li>
+<li>Try to respond to each comment by making a change to your paper to address the concern (e.g., add text, add a sensitivity experiment, test a different approach etc).</li>
+<li>Flag up key edits in the Revised Manuscript (track changes or mark up additions manually).</li>
+</ul>
+<h2 id="publication-is-the-first-step">Publication is the First Step</h2>
+<ul>
+<li>You need to advertise your work. Make your paper work for you. (Could be another whole session on this.)</li>
+<li>Press release if appropriate. Need to talk to the press office early (this can take weeks to organise).</li>
+<li>Or reach out to specific media contacts (look at who covered similar or related work in the past). Sometimes better than a blanket press release. Cultivate good relationships with key media contacts; as they get to know you they may reach out to you for news.</li>
+<li>Blog on Uni website (Leaf, BAG etc).</li>
+<li>Presentations at conferences and project meetings. Contact colleagues and give “invited” talks.</li>
+<li>Social media.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/leeds-bag/bag_wiki" class="fa fa-code-fork" style="color: #fcfcfc"> leeds-bag/bag_wiki</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
