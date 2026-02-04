@@ -1,7 +1,7 @@
 # Transferring data using SFTP
 
 
-Author: Mathew Alexander
+Author: Matthew Alexander
 
 Acknowledgements: Information found at <https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server> 
 
@@ -30,7 +30,7 @@ SFTP can be used to transfer files from any machine that has the SSH protocol (W
 In either machine, first check that you can connect to the remote machine with SSH (e.g. foe-linux-01):
 
 ```
-ssh username@foe-linux-cpu
+$ ssh username@foe-linux-cpu
 ```
 
 n.b. You may need to proxy jump through <i>rash@leeds.ac.uk</i> if you're outside the university network.
@@ -39,14 +39,14 @@ If this works, you have verified that you are able to do sftp, you can exit with
 
 
 ```
-exit
+$ exit
 ```
 
 
 Establish SFTP with the command:
 
 ```
-sftp username@foe-linux-cpu
+$ sftp username@foe-linux-cpu
 ```
 
 
@@ -54,7 +54,7 @@ Now the terminal should look like this:
 
 
 ```
-sftp> 
+$ sftp> 
 ```
 
 
@@ -62,7 +62,7 @@ You can use the 'help' command to find out about the SFTP commands available:
 
 
 ```
-sftp> help 
+$ sftp> help 
 ```
 
 
@@ -70,7 +70,7 @@ You can use most linux/unix commands here (e.g. ls, cd, pwd). By using 'l', you 
 
 
 ```
-sftp> ls
+$ sftp> ls
 
 Desktop  Documents  Downloads  Folder1  Folder2
 ```
@@ -80,7 +80,7 @@ Once you have navigated to the desired directory on the remote machine, you can 
 
 
 ```
-sftp> put localFile
+$ sftp> put localFile
 ```
 
 
@@ -96,7 +96,7 @@ You can download files to the local machine using the 'get' command:
 
 
 ```
-sftp> get localFile
+$ sftp> get localFile
 ```
 
 
@@ -111,7 +111,7 @@ sftp> get remoteFile localFile
 Similarly with 'put', you can use option flags:
 
 ```
-sftp> get -r remoteFile
+$ sftp> get -r remoteFile
 ```
 
 
@@ -119,9 +119,10 @@ Once you have transferred your files, you can exit with:
 
 
 ```
-sftp> exit
+$ sftp> exit
 ```
 
 
 More detail on other commands, such as file manipulation, setting up servers and error debugging can be found at: <https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server>
+
 
