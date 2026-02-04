@@ -1,4 +1,5 @@
 # Welcome to the BAG Wiki!
+![BAG mug logo](./assets/BAG_banner.png)
 
 This is a wiki for Leeds Biosphere and Atmosphere Group (BAG) to share computing and technical guides and tips
 
