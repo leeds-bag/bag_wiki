@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Transferring data using SFTP - Leeds BAG Wiki</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Transferring data using SFTP";
+        var mkdocs_page_input_path = "Transferring data using SFTP.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Leeds BAG Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../python_quick_start/">Python Quick Start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VSCode_guide/">Using VSCode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../conda_setup/">Mamba Set Up</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../how_to_regrid_xesmf_tutorial/">Regridding with Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dask_demo/">Speedy Python with Dask</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../printing/">Printing A1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../globus/">Using Globus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../paper_writing/">Writing Academic Papers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Leeds BAG Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Transferring data using SFTP</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/Transferring data using SFTP.md">Edit on leeds-bag/bag_wiki</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="transferring-data-using-sftp">Transferring data using SFTP</h1>
+<p>Author: Mathew Alexander</p>
+<p>Acknowledgements: Information found at https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server . </p>
+<h2 id="what-is-sftp">What is SFTP?</h2>
+<p>Secure File Transfer Protocol (SFTP) is a protocol built in SSH that transfers files over a secure connection. This is the encrypted version of File Transfer Protocol (FTP), the use of which is now widely discouraged.</p>
+<h2 id="why-would-i-use-sftp">Why would I use SFTP?</h2>
+<p>SFTP can be used to transfer files from any machine that has the SSH protocol (Windows, macOS, Linux and Unix). This can be useful if you use a remote machine (e.g. foe-Linux, JASMIN, etc.) and want to either move files between the remote machines or transfer files from your local machine to remote ones. </p>
+<h2 id="how-do-i-use-sftp">How do I use SFTP?</h2>
+<p>In either machine, first check that you can connect to the remote machine with SSH (e.g. foe-linux-01):</p>
+<pre><code>ssh username@foe-linux-cpu
+</code></pre>
+<p>n.b. You may need to proxy jump through <i>rash@leeds.ac.uk</i> if you're outside the university network.</p>
+<p>If this works, you have verified that you are able to do sftp, you can exit with:</p>
+<pre><code>exit
+</code></pre>
+<p>Establish SFTP with the command:</p>
+<pre><code>sftp username@foe-linux-cpu
+</code></pre>
+<p>Now the terminal should look like this:</p>
+<pre><code>sftp&gt; 
+</code></pre>
+<p>You can use the 'help' command to find out about the SFTP commands available:</p>
+<pre><code>sftp&gt; help 
+</code></pre>
+<p>You can use most linux/unix commands here (e.g. ls, cd, pwd). By using 'l', you specify the command for the local machine:</p>
+<pre><code>sftp&gt; ls
+
+Desktop  Documents  Downloads  Folder1  Folder2
+</code></pre>
+<p>Once you have navigated to the desired directory on the remote machine, you can transfer a file from the local machine to the remote machine using the 'put' command:</p>
+<pre><code>sftp&gt; put localFile
+</code></pre>
+<p>Upload an entire directory with the 'put -r' command:</p>
+<pre><code>sftp&gt; put -r localFile
+</code></pre>
+<p>You can download files to the local machine using the 'get' command:</p>
+<pre><code>sftp&gt; get localFile
+</code></pre>
+<p>You can copy the remote file to a different name by specifying the name afterwards:</p>
+<pre><code>sftp&gt; get remoteFile localFile
+</code></pre>
+<p>Similarly with 'put', you can use option flags:</p>
+<pre><code>sftp&gt; get -r remoteFile
+</code></pre>
+<p>Once you have transferred your files, you can exit with:</p>
+<pre><code>sftp&gt; exit
+</code></pre>
+<p>More detail on other commands, such as file manipulation, setting up servers and error debugging can be found at: https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/leeds-bag/bag_wiki" class="fa fa-code-fork" style="color: #fcfcfc"> leeds-bag/bag_wiki</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
