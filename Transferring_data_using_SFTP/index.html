@@ -100,7 +100,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="transferring-data-using-sftp">Transferring data using SFTP</h1>
-<p>Author: Mathew Alexander</p>
+<p>Author: Matthew Alexander</p>
 <p>Acknowledgements: Information found at <a href="https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server">https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server</a> </p>
 <h2 id="what-is-sftp">What is SFTP?</h2>
 <p>Secure File Transfer Protocol (SFTP) is a protocol built in SSH that transfers files over a secure connection. This is the encrypted version of File Transfer Protocol (FTP), the use of which is now widely discouraged.</p>
@@ -108,43 +108,43 @@
 <p>SFTP can be used to transfer files from any machine that has the SSH protocol (Windows, macOS, Linux and Unix). This can be useful if you use a remote machine (e.g. foe-Linux, JASMIN, etc.) and want to either move files between the remote machines or transfer files from your local machine to remote ones. </p>
 <h2 id="how-do-i-use-sftp">How do I use SFTP?</h2>
 <p>In either machine, first check that you can connect to the remote machine with SSH (e.g. foe-linux-01):</p>
-<pre><code>ssh username@foe-linux-cpu
+<pre><code>$ ssh username@foe-linux-cpu
 </code></pre>
 <p>n.b. You may need to proxy jump through <i>rash@leeds.ac.uk</i> if you're outside the university network.</p>
 <p>If this works, you have verified that you are able to do sftp, you can exit with:</p>
-<pre><code>exit
+<pre><code>$ exit
 </code></pre>
 <p>Establish SFTP with the command:</p>
-<pre><code>sftp username@foe-linux-cpu
+<pre><code>$ sftp username@foe-linux-cpu
 </code></pre>
 <p>Now the terminal should look like this:</p>
-<pre><code>sftp&gt; 
+<pre><code>$ sftp&gt; 
 </code></pre>
 <p>You can use the 'help' command to find out about the SFTP commands available:</p>
-<pre><code>sftp&gt; help 
+<pre><code>$ sftp&gt; help 
 </code></pre>
 <p>You can use most linux/unix commands here (e.g. ls, cd, pwd). By using 'l', you specify the command for the local machine:</p>
-<pre><code>sftp&gt; ls
+<pre><code>$ sftp&gt; ls
 
 Desktop  Documents  Downloads  Folder1  Folder2
 </code></pre>
 <p>Once you have navigated to the desired directory on the remote machine, you can transfer a file from the local machine to the remote machine using the 'put' command:</p>
-<pre><code>sftp&gt; put localFile
+<pre><code>$ sftp&gt; put localFile
 </code></pre>
 <p>Upload an entire directory with the 'put -r' command:</p>
 <pre><code>sftp&gt; put -r localFile
 </code></pre>
 <p>You can download files to the local machine using the 'get' command:</p>
-<pre><code>sftp&gt; get localFile
+<pre><code>$ sftp&gt; get localFile
 </code></pre>
 <p>You can copy the remote file to a different name by specifying the name afterwards:</p>
 <pre><code>sftp&gt; get remoteFile localFile
 </code></pre>
 <p>Similarly with 'put', you can use option flags:</p>
-<pre><code>sftp&gt; get -r remoteFile
+<pre><code>$ sftp&gt; get -r remoteFile
 </code></pre>
 <p>Once you have transferred your files, you can exit with:</p>
-<pre><code>sftp&gt; exit
+<pre><code>$ sftp&gt; exit
 </code></pre>
 <p>More detail on other commands, such as file manipulation, setting up servers and error debugging can be found at: <a href="https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server">https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server</a></p>
               
