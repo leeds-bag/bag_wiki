@@ -3,7 +3,7 @@
 
 Author: Mathew Alexander
 
-Acknowledgements: Information found at https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server . 
+Acknowledgements: Information found at <https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server> 
 
 
 
@@ -123,4 +123,5 @@ sftp> exit
 ```
 
 
-More detail on other commands, such as file manipulation, setting up servers and error debugging can be found at: https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server
+More detail on other commands, such as file manipulation, setting up servers and error debugging can be found at: <https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server>
+
