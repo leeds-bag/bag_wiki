@@ -299,7 +299,7 @@ regridded_nn.to_netcdf('output_nearest.nc')
 <ul>
 <li>
 <p><strong>Saving and Reusing Regridding Weights</strong>: When you create a regridder in xESMF, it computes a weight matrix that maps the source grid to the target grid. This computation can be slow for large grids, but you can save the weights to a file and reload them later for faster repeated regridding.</p>
-<p>Example:</p>
+<p>Example (This is especially useful when you need to regrid many variables or process data in chunks, as you only need to compute the weights once):</p>
 </li>
 </ul>
 <pre><code class="language-python"># First time: compute and save weights
@@ -307,8 +307,6 @@ regridder = xe.Regridder(ds, target_grid, 'bilinear', filename='my_weights.nc')
 
 # Next time: reuse the saved weights (much faster)
 regridder = xe.Regridder(ds, target_grid, 'bilinear', filename='my_weights.nc', reuse_weights=True)
-</code></pre>
-<pre><code>This is especially useful when you need to regrid many variables or process data in chunks, as you only need to compute the weights once.
 </code></pre>
 <ul>
 <li>
