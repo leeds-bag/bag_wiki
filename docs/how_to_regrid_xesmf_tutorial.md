@@ -157,7 +157,7 @@ ds = xr.open_dataset('input_data.nc', chunks={'time': 10, 'lat': 100, 'lon': 100
 
 - **Saving and Reusing Regridding Weights**: When you create a regridder in xESMF, it computes a weight matrix that maps the source grid to the target grid. This computation can be slow for large grids, but you can save the weights to a file and reload them later for faster repeated regridding.
 
-    Example:
+    Example (This is especially useful when you need to regrid many variables or process data in chunks, as you only need to compute the weights once):
 
 ```python
 # First time: compute and save weights
@@ -166,8 +166,6 @@ regridder = xe.Regridder(ds, target_grid, 'bilinear', filename='my_weights.nc')
 # Next time: reuse the saved weights (much faster)
 regridder = xe.Regridder(ds, target_grid, 'bilinear', filename='my_weights.nc', reuse_weights=True)
 ```
-
-    This is especially useful when you need to regrid many variables or process data in chunks, as you only need to compute the weights once.
 
 - **Parallel Processing**: If you have access to a cluster or multicore machine, dask can distribute the computation. Set up a dask cluster for even faster processing.
 
