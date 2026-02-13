@@ -151,7 +151,7 @@
 <p>Regridding (also called remapping or resampling) is a common task in geosciences, especially when working with gridded data such as satellite or climate model outputs. The goal is to interpolate data from one grid to another, which is essential for comparing datasets, combining products, or preparing data for models.</p>
 <p>In this tutorial, we'll use the Python package <strong>xESMF</strong> to regrid 2D NetCDF datasets. xESMF is built on top of xarray and ESMF, providing a simple interface for regridding with various algorithms.</p>
 <h2 id="prerequisites">Prerequisites</h2>
-<p>Install the required packages:</p>
+<p>If not already present, install the required packages:</p>
 <pre><code class="language-bash">mamba install xarray xesmf
 </code></pre>
 <h2 id="1-loading-a-netcdf-dataset">1. Loading a NetCDF Dataset</h2>
@@ -352,7 +352,6 @@ plt.show()
 <li><a href="https://docs.xarray.dev/">xarray Documentation</a></li>
 </ul>
 <hr />
-<p>This tutorial should help you get started with regridding 2D NetCDF datasets in Python using xESMF. Adjust the code to your specific data and needs!</p>
               
             </div>
           </div><footer>
