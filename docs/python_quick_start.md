@@ -1,6 +1,6 @@
 # Python Quick Start Guide
 
-Author: Callum 
+Author: Callum Smith, Oct 2025 (last updated: Oct 2025)
 
 ## Introduction
 Python is a powerful, easy-to-learn programming language widely used in science, data analysis, web development, automation, and more. This guide will help beginners get started with Python, focusing on best practices for installation, environment management, and basic usage. For scientific and data work, using Conda (or Mamba) is highly recommended—see the [Conda Setup Guide](./conda_setup.md) for details.
