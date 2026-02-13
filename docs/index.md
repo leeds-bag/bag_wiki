@@ -6,7 +6,9 @@ This is a wiki for Leeds Biosphere and Atmosphere Group (BAG) to share computing
 ## Contributing
 If you'd like to contribute, thank you!
 
+
 There a few ways to do this:
+
 - With a GitHub account invited to this Organisation, you can add files (tutorials etc) and publish website changes
     - To add files to the website, go to the docs folder and create or upload a file
     - Commit this change using the button, writing a short description of your change
