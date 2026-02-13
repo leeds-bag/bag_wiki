@@ -1,5 +1,7 @@
 ## Speeding up xarray calculations using dask
 
+Author: Ben Silver, Jan 2024 (last updated: Jan 2024)
+
 This notebook demonstrates how to use the `dask` package to parallelise operations in xarray which (if used correctly and with some luck!) can massively speed up xarray.
 
 **For this to work you first need to have installed `dask`** (and `xarray`, `netcdf4`, etc.)
