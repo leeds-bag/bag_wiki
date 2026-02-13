@@ -6,7 +6,7 @@ nav_order: 2
 ---
 
 # Guide to VS Code
-Author: Ben Bradley, March 2025 (last updated: Nov 2025)
+Author: Ben Bradley, March 2025 (last updated: Feb 2026)
 
 ## 🏁 Introduction
 
