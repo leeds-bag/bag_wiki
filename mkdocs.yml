@@ -10,16 +10,18 @@ theme:
 
 nav:
   - Home: index.md
-  - How-to guides:
+  - Computing tips and guides:
       - Linux Cheat Sheet: linux_cheat_sheet.md
       - Python Quick Start: python_quick_start.md
       - Using VSCode: VSCode_guide.md
       - Mamba Set Up: conda_setup.md
-      - Transferring Data via SFTP: Transferring_data_using_SFTP.md
       - Regridding with Python: how_to_regrid_xesmf_tutorial.md
       - Speedy Python with Dask: dask_demo.md
-      - Printing A1: printing.md
       - Using Globus: globus.md
+      - Transferring Data via SFTP: Transferring_data_using_SFTP.md
+    
+  - General tips:
+      - Printing A1: printing.md
       - Writing Academic Papers: paper_writing.md
       
 
