@@ -3,7 +3,7 @@
 
 Author: Matthew Alexander, Jan 2026 (last updated: Jan 2026)
 
-Acknowledgements: Information found at <https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server> 
+Acknowledgements: [Digital Ocean SFTP Tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server)
 
 
 
@@ -88,7 +88,7 @@ Upload an entire directory with the 'put -r' command:
 
 
 ```
-sftp> put -r localFile
+$ sftp> put -r localFile
 ```
 
 
@@ -104,7 +104,7 @@ You can copy the remote file to a different name by specifying the name afterwar
 
 
 ```
-sftp> get remoteFile localFile
+$ sftp> get remoteFile localFile
 ```
 
 
@@ -124,6 +124,7 @@ $ sftp> exit
 
 
 More detail on other commands, such as file manipulation, setting up servers and error debugging can be found at: <https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server>
+
 
 
 
