@@ -187,7 +187,6 @@ shareable? This is where more complete IDEs like VS Code come in!</p>
 - Installable extensions like auto-generated documentation, AI coding suggestions, and more!</p>
 <p>Hopefully this convinces you that VS Code is worth the effort to set up and use for day-to-day coding tasks. We'll explore
 <em>how</em> to set this up in the following section.</p>
-<p>(For more information, visit the <a href="https://bjsilver.github.io/bag_wiki/docs/remote_access/vscode.html">BAG wiki guide to VS Code</a>)</p>
 <h2 id="important-a-note-on-vs-code-compatibility">⚠️ IMPORTANT: A Note on VS Code Compatibility</h2>
 <p>At the moment, the university is transitioning its "general compute" resource for the faculty of environment from the old foe-linux
 machines that run on CentOS to modern machines run with RedHat9. The old machines have outdated software, requiring a downgrade to
@@ -210,7 +209,7 @@ version 1.98 of VS Code to enable use. The new machines are, as of 06/10/2025, n
       <p>Go to the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">University of Leeds VPN guide</a>. Under attachments to the right of the screen, there is a list of VPN versions you can download. Select the appropriate download for your operating system and follow the setup wizard instructions.    
   </ol>
 
-  ![png](assets/PulseSecure_download.png)
+![png](assets/PulseSecure_download.png)
 
   <li>Once you have the VPN installed, follow the instructions on the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">VPN guide</a>, which detail how to connect.</li>
 </ol>
@@ -242,7 +241,7 @@ version 1.98 of VS Code to enable use. The new machines are, as of 06/10/2025, n
 <!-- <img src="assets/VSCode_extensions.png" alt="png" width="600"/> -->
 
 <h3 id="3-config-file">3) config file</h3>
-<p>To ssh easily into remote machines like foe-linux, it's easiest to create a config file containing the details of the ssh connections you want to make. This is a file called <code>config</code> stored in the <code>.ssh</code> folder of your local machine. For linux users, the full path location will simply be <code>~/.ssh/config</code>. For Windows users, this might be in a different location but you'll likely have a <code>.ssh</code> folder somewhere. For instance, the path to mine is <code>C:\Users\{my username}\.ssh\config</code>. Whether you can find it in your file explorer or not, you'll be able to edit your config file in VS Code. Detailed instructions are on the <a href="https://bjsilver.github.io/bag_wiki/docs/remote_access/vscode.html">BAG Wiki</a> if you get stuck, but in short:</p>
+<p>To ssh easily into remote machines like foe-linux, it's easiest to create a config file containing the details of the ssh connections you want to make. This is a file called <code>config</code> stored in the <code>.ssh</code> folder of your local machine. For linux users, the full path location will simply be <code>~/.ssh/config</code>. For Windows users, this might be in a different location but you'll likely have a <code>.ssh</code> folder somewhere. For instance, the path to mine is <code>C:\Users\{my username}\.ssh\config</code>. Whether you can find it in your file explorer or not, you'll be able to edit your config file in VS Code. In short:</p>
 <ol type="a">
   <li>open the command pallete using <code>Ctrl</code>+<code>Shift</code>+<code>P</code>.</li>
   <li>search for "Remote - SSH". An option to open a config file should appear.</li>
