@@ -10,13 +10,13 @@ To use Python and Conda/Mamba, you'll need to open a terminal (command line wind
 
 - **Windows:**
 	- If you have Windows Subsystem for Linux (WSL) installed, open the Start menu, search for "WSL" or your chosen Linux distribution (e.g., Ubuntu), and click to open a Linux terminal.
-	- Alternatively, use [MobaXterm](https://mobaxterm.mobatek.net/): install it, then open MobaXterm and start a local terminal or a WSL session.
+	- Alternatively and more commonly, use [MobaXterm](https://mobaxterm.mobatek.net/): install it, then open MobaXterm and start a local terminal session.
 - **Mac:**
 	- Open the Terminal app (find it in Applications > Utilities, or search for "Terminal" in Spotlight).
 - **Linux:**
 	- Open your system's Terminal app (often found in the applications menu, or use Ctrl+Alt+T as a shortcut).
 
-Once your terminal is open, you can follow the steps below to install Python, set up environments, and run code.
+Once your terminal is open, you can follow the steps below to install Python, set up environments, and run code. Python stays installed, so you only need to setup once.
 
 ## Why Use Python?
 - Simple, readable syntax
@@ -57,32 +57,12 @@ jupyter lab
 ```
 
 ## Step 5: Learn the Basics
-Here are some key concepts for beginners:
-- **Variables**: Store data (numbers, text, etc.)
-- **Data types**: int, float, str, list, dict, etc.
-- **Control flow**: if, for, while
-- **Functions**: Reusable blocks of code
-- **Modules**: Import libraries to extend Python’s capabilities
-
-Example:
-```python
-# myscript.py
-name = "World"
-print(f"Hello, {name}!")
-```
+A brilliant and comprehensive guide to Python is hosted by [Arc at Leeds](https://swcarpentry.github.io/python-novice-inflammation/).
 
 ## Best Practices
 - Always use environments for your projects
 - Prefer conda-forge for package installs
-- Keep your Python and packages up to date
-- Use version control (e.g., git) for your code
 - Read error messages—they help you debug!
-
-## Useful Resources
-- [Conda Setup Guide](./conda_setup.md)
-- [Python Official Documentation](https://docs.python.org/3/)
-- [Real Python Tutorials](https://realpython.com/)
-- [Jupyter Project](https://jupyter.org/)
 
 ## Troubleshooting
 - If you have issues with packages, check you’re using conda-forge and not mixing channels
