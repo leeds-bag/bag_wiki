@@ -1,6 +1,6 @@
 # Tutorial: Regridding 2D NetCDF Datasets in Python with xESMF
 
-Author: Callum 
+Author: Callum Smith, Jan 2026 (last updated: Jan 2026)
 
 Regridding (also called remapping or resampling) is a common task in geosciences, especially when working with gridded data such as satellite or climate model outputs. The goal is to interpolate data from one grid to another, which is essential for comparing datasets, combining products, or preparing data for models.
 
