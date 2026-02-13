@@ -8,7 +8,7 @@ In this tutorial, we'll use the Python package **xESMF** to regrid 2D NetCDF dat
 
 ## Prerequisites
 
-Install the required packages:
+If not already present, install the required packages:
 
 ```bash
 mamba install xarray xesmf
@@ -214,5 +214,3 @@ plt.show()
 - [xarray Documentation](https://docs.xarray.dev/)
 
 ---
-
-This tutorial should help you get started with regridding 2D NetCDF datasets in Python using xESMF. Adjust the code to your specific data and needs!
