@@ -76,9 +76,6 @@ Visual Studio Code (VS Code) offers many attractive features, such as:
 Hopefully this convinces you that VS Code is worth the effort to set up and use for day-to-day coding tasks. We'll explore
 _how_ to set this up in the following section.
 
-(For more information, visit the [BAG wiki guide to VS Code](https://bjsilver.github.io/bag_wiki/docs/remote_access/vscode.html))
-
-
 ## ⚠️ IMPORTANT: A Note on VS Code Compatibility
 
 At the moment, the university is transitioning its "general compute" resource for the faculty of environment from the old foe-linux
@@ -105,7 +102,7 @@ It is currently recommended to choose option 1, but all researchers will eventua
       <p>Go to the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">University of Leeds VPN guide</a>. Under attachments to the right of the screen, there is a list of VPN versions you can download. Select the appropriate download for your operating system and follow the setup wizard instructions.    
   </ol>
 
-  ![png](assets/PulseSecure_download.png)
+![png](assets/PulseSecure_download.png)
 
   <li>Once you have the VPN installed, follow the instructions on the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">VPN guide</a>, which detail how to connect.</li>
 </ol>
@@ -140,7 +137,7 @@ It is currently recommended to choose option 1, but all researchers will eventua
 
 ### 3) config file
 
-To ssh easily into remote machines like foe-linux, it's easiest to create a config file containing the details of the ssh connections you want to make. This is a file called `config` stored in the `.ssh` folder of your local machine. For linux users, the full path location will simply be `~/.ssh/config`. For Windows users, this might be in a different location but you'll likely have a `.ssh` folder somewhere. For instance, the path to mine is `C:\Users\{my username}\.ssh\config`. Whether you can find it in your file explorer or not, you'll be able to edit your config file in VS Code. Detailed instructions are on the [BAG Wiki](https://bjsilver.github.io/bag_wiki/docs/remote_access/vscode.html) if you get stuck, but in short:
+To ssh easily into remote machines like foe-linux, it's easiest to create a config file containing the details of the ssh connections you want to make. This is a file called `config` stored in the `.ssh` folder of your local machine. For linux users, the full path location will simply be `~/.ssh/config`. For Windows users, this might be in a different location but you'll likely have a `.ssh` folder somewhere. For instance, the path to mine is `C:\Users\{my username}\.ssh\config`. Whether you can find it in your file explorer or not, you'll be able to edit your config file in VS Code. In short:
 
 <ol type="a">
   <li>open the command pallete using <code>Ctrl</code>+<code>Shift</code>+<code>P</code>.</li>
