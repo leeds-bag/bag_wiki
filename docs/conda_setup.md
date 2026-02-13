@@ -3,7 +3,7 @@
 Author: Callum Smith, Oct 2025 (last updated: Oct 2025)
 
 ## What is Mamba?
-Mamba is a fast, robust, and user-friendly package manager for managing environments and packages in the Conda ecosystem. It is a drop-in replacement for the Conda command-line tool, written in C++ for speed and efficiency. Mamba uses the same environment and package specifications as Conda, but resolves dependencies and installs packages much faster, making it ideal for scientific computing, data science, and reproducible research.
+You might have heard of Conda (Anacond), a package management software for Python. Mamba is the newer, faster, more robust, and more user-friendly package manager for managing environments and packages than traditional Conda. It is a drop-in replacement for the Conda command-line tool, written in C++ for speed and efficiency. Mamba uses the same environment and package specifications as Conda, but resolves dependencies and installs packages much faster.
 
 ### Why Use Mamba?
 - **Speed**: Mamba is significantly faster than Conda, especially for solving complex dependencies and installing large packages.
@@ -45,29 +45,29 @@ Restart your terminal to activate Conda automatically.
 Mamba is a drop-in replacement for Conda. Simply use `mamba` instead of `conda` for faster operations:
 
 - **Create a new environment:**
-  ```bash
-  mamba create -n myenv python=3.11 numpy pandas
-  ```
+```bash
+mamba create -n myenv python=3.11 numpy pandas
+```
 - **Activate an environment:**
-  ```bash
-  conda activate myenv
-  ```
+```bash
+conda activate myenv
+```
 - **Install packages:**
-  ```bash
-  mamba install scipy matplotlib
-  ```
+```bash
+mamba install scipy matplotlib
+```
 - **Update packages:**
-  ```bash
-  mamba update --all
-  ```
+```bash
+mamba update --all
+```
 - **List environments:**
-  ```bash
-  mamba env list
-  ```
+```bash
+mamba env list
+```
 - **Remove an environment:**
-  ```bash
-  mamba env remove -n myenv
-  ```
+```bash
+mamba env remove -n myenv
+```
 
 ## Tips and Best Practices
 - Always use the `conda-forge` channel for the latest, community-maintained packages.
@@ -76,17 +76,15 @@ Mamba is a drop-in replacement for Conda. Simply use `mamba` instead of `conda` 
 Using the `conda-forge` channel is important because it ensures all packages in your environment are built and maintained by the same community, following consistent standards. This greatly reduces the risk of dependency conflicts and broken environments that can occur when mixing packages from different channels. Conda-forge provides up-to-date versions, broad compatibility, and reliable builds for scientific and data science packages. By sticking to conda-forge, you make your environment more reproducible and robust.
 
 - To update Mamba itself:
-  ```bash
-  mamba update mamba
-  ```
+```bash
+mamba update mamba
+```
 - For troubleshooting, use verbose mode:
-  ```bash
-  mamba install <package> --verbose
-  ```
+```bash
+mamba install <package> --verbose
+```
 
-## Further Reading
+## Additional info
 - [Mamba Documentation](https://mamba.readthedocs.io/en/latest/)
 - [Miniforge GitHub](https://github.com/conda-forge/miniforge)
 - [Conda-forge](https://conda-forge.org/)
-
-Mamba makes managing scientific Python environments fast, reliable, and reproducible. Enjoy your new setup!
