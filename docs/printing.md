@@ -1,6 +1,6 @@
 # 🖨️ Printing an A1 Poster on 4 Sheets of A3
 
-Author: Elle 
+Author: Elle Smith, Nov 2025 (last updated: Nov 2025)
 
 
 This guide details how to split an A1 poster into four separate A3 PDF sheets for printing on University of Leeds printers.
