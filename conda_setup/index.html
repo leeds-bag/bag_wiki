@@ -77,7 +77,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#further-reading">Further Reading</a>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-info">Additional info</a>
     </li>
     </ul>
                   </li>
@@ -125,7 +125,7 @@
                 <h1 id="guide-to-setting-up-mamba-conda-on-a-linux-machine">Guide to Setting Up Mamba (Conda) on a Linux Machine</h1>
 <p>Author: Callum Smith, Oct 2025 (last updated: Oct 2025)</p>
 <h2 id="what-is-mamba">What is Mamba?</h2>
-<p>Mamba is a fast, robust, and user-friendly package manager for managing environments and packages in the Conda ecosystem. It is a drop-in replacement for the Conda command-line tool, written in C++ for speed and efficiency. Mamba uses the same environment and package specifications as Conda, but resolves dependencies and installs packages much faster, making it ideal for scientific computing, data science, and reproducible research.</p>
+<p>You might have heard of Conda (Anacond), a package management software for Python. Mamba is the newer, faster, more robust, and more user-friendly package manager for managing environments and packages than traditional Conda. It is a drop-in replacement for the Conda command-line tool, written in C++ for speed and efficiency. Mamba uses the same environment and package specifications as Conda, but resolves dependencies and installs packages much faster.</p>
 <h3 id="why-use-mamba">Why Use Mamba?</h3>
 <ul>
 <li><strong>Speed</strong>: Mamba is significantly faster than Conda, especially for solving complex dependencies and installing large packages.</li>
@@ -154,25 +154,35 @@ conda init
 <h2 id="using-mamba">Using Mamba</h2>
 <p>Mamba is a drop-in replacement for Conda. Simply use <code>mamba</code> instead of <code>conda</code> for faster operations:</p>
 <ul>
-<li><strong>Create a new environment:</strong>
-  <code>bash
-  mamba create -n myenv python=3.11 numpy pandas</code></li>
-<li><strong>Activate an environment:</strong>
-  <code>bash
-  conda activate myenv</code></li>
-<li><strong>Install packages:</strong>
-  <code>bash
-  mamba install scipy matplotlib</code></li>
-<li><strong>Update packages:</strong>
-  <code>bash
-  mamba update --all</code></li>
-<li><strong>List environments:</strong>
-  <code>bash
-  mamba env list</code></li>
-<li><strong>Remove an environment:</strong>
-  <code>bash
-  mamba env remove -n myenv</code></li>
+<li><strong>Create a new environment:</strong></li>
 </ul>
+<pre><code class="language-bash">mamba create -n myenv python=3.11 numpy pandas
+</code></pre>
+<ul>
+<li><strong>Activate an environment:</strong></li>
+</ul>
+<pre><code class="language-bash">conda activate myenv
+</code></pre>
+<ul>
+<li><strong>Install packages:</strong></li>
+</ul>
+<pre><code class="language-bash">mamba install scipy matplotlib
+</code></pre>
+<ul>
+<li><strong>Update packages:</strong></li>
+</ul>
+<pre><code class="language-bash">mamba update --all
+</code></pre>
+<ul>
+<li><strong>List environments:</strong></li>
+</ul>
+<pre><code class="language-bash">mamba env list
+</code></pre>
+<ul>
+<li><strong>Remove an environment:</strong></li>
+</ul>
+<pre><code class="language-bash">mamba env remove -n myenv
+</code></pre>
 <h2 id="tips-and-best-practices">Tips and Best Practices</h2>
 <ul>
 <li>Always use the <code>conda-forge</code> channel for the latest, community-maintained packages.</li>
@@ -180,20 +190,21 @@ conda init
 <h3 id="why-use-conda-forge">Why Use conda-forge?</h3>
 <p>Using the <code>conda-forge</code> channel is important because it ensures all packages in your environment are built and maintained by the same community, following consistent standards. This greatly reduces the risk of dependency conflicts and broken environments that can occur when mixing packages from different channels. Conda-forge provides up-to-date versions, broad compatibility, and reliable builds for scientific and data science packages. By sticking to conda-forge, you make your environment more reproducible and robust.</p>
 <ul>
-<li>To update Mamba itself:
-  <code>bash
-  mamba update mamba</code></li>
-<li>For troubleshooting, use verbose mode:
-  <code>bash
-  mamba install &lt;package&gt; --verbose</code></li>
+<li>To update Mamba itself:</li>
 </ul>
-<h2 id="further-reading">Further Reading</h2>
+<pre><code class="language-bash">mamba update mamba
+</code></pre>
+<ul>
+<li>For troubleshooting, use verbose mode:</li>
+</ul>
+<pre><code class="language-bash">mamba install &lt;package&gt; --verbose
+</code></pre>
+<h2 id="additional-info">Additional info</h2>
 <ul>
 <li><a href="https://mamba.readthedocs.io/en/latest/">Mamba Documentation</a></li>
 <li><a href="https://github.com/conda-forge/miniforge">Miniforge GitHub</a></li>
 <li><a href="https://conda-forge.org/">Conda-forge</a></li>
 </ul>
-<p>Mamba makes managing scientific Python environments fast, reliable, and reproducible. Enjoy your new setup!</p>
               
             </div>
           </div><footer>
