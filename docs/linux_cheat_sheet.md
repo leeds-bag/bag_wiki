@@ -1,6 +1,6 @@
 # Linux Command Line Cheat Sheet
 
-Author: Callum 
+Author: Callum Smith, Oct 2025 (last updated: Oct 2025)
 
 ## Introduction
 
