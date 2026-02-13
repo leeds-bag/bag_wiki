@@ -1,8 +1,6 @@
 # Writing a Scientific Paper
 
-**Author:** Dom Spracklen 
-
-**Updated:** Dec 2025
+Author: Dominick Spracklen, Dec 2025 (last updated: Dec 2025)
 
 **Acknowledgements:** Everyone in BAG, Daniel Jacob (Harvard University)
 
