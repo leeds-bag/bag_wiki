@@ -1,7 +1,6 @@
 # Guide to using Globus
 
-by Alicia, 04/12/2025
-(last updated 04/12/2025)
+by Alicia Hoffman, Dec 2025 (last updated: Dec 2025)
 
 ### What is Globus?
 
