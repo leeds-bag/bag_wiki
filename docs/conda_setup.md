@@ -3,7 +3,7 @@
 Author: Callum Smith, Oct 2025 (last updated: Oct 2025)
 
 ## What is Mamba?
-You might have heard of Conda (Anacond), a package management software for Python. Mamba is the newer, faster, more robust, and more user-friendly package manager for managing environments and packages than traditional Conda. It is a drop-in replacement for the Conda command-line tool, written in C++ for speed and efficiency. Mamba uses the same environment and package specifications as Conda, but resolves dependencies and installs packages much faster.
+You might have heard of Conda (Anaconda), a package management software for Python. Mamba is the newer, faster, more robust, and more user-friendly package manager for managing environments and packages than traditional Conda. It is a drop-in replacement for the Conda command-line tool, written in C++ for speed and efficiency. Mamba uses the same environment and package specifications as Conda, but resolves dependencies and installs packages much faster.
 
 ### Why Use Mamba?
 - **Speed**: Mamba is significantly faster than Conda, especially for solving complex dependencies and installing large packages.
