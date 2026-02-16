@@ -52,6 +52,8 @@ Python relies on libraries for most interesting things anyone might actually wan
 
 You need a **package manager**! Setting this up means you can easily and dependably install any libraries you may need.
 
+![png](assets/python_environment.png)
+
 Once you start installing lots of libraries, you'll eventually find that some conflict with others. If you get unlucky,
 you'll install a library and find that your code no longer runs! To avoid this, you need a **virtual environment manager**:
 something that resolves package dependencies and installs libraries in virtual environments that can easily be deleted and
