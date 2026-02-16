@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Guide to SLURM Job Queuing - Leeds BAG Wiki</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Guide to SLURM Job Queuing";
+        var mkdocs_page_input_path = "SLURM_guide.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Leeds BAG Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Computing tips and guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../python_quick_start/">Python Quick Start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VSCode_guide/">Using VSCode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../conda_setup/">Mamba Set Up</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../how_to_regrid_xesmf_tutorial/">Regridding with Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dask_demo/">Speedy Python with Dask</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../globus/">Using Globus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Transferring_data_using_SFTP/">Transferring Data via SFTP</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">General tips</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../printing/">Printing A1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../paper_writing/">Writing Academic Papers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Leeds BAG Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Guide to SLURM Job Queuing</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/SLURM_guide.md">Edit on leeds-bag/bag_wiki</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="guide-to-slurm-job-queuing">Guide to SLURM Job Queuing</h1>
+<p>Author: Ben Bradley, Feb 2026 (last updated: Feb 2026)</p>
+<h2 id="what-is-slurm">What is SLURM?</h2>
+<p>SLURM stands for Simple Linux Utility for Resource Management. It is a job management system used to manage compute resources. Many modern HPCs use SLURM, meaning it's useful to understand its basic features. Guides to using SLURM exist for both <a href="https://help.jasmin.ac.uk/docs/batch-computing/slurm-scheduler-overview/">JASMIN</a> and <a href="https://arcdocs.leeds.ac.uk/aire/usage/job_type.html">Aire</a>, which are worth consulting before running any jobs on those machines.</p>
+<h2 id="why-use-slurm">Why use SLURM?</h2>
+<ul>
+<li><strong>Necessity</strong>: many HPC systems will not allow users to run intensive jobs without submitting to the SLURM queue.</li>
+<li><strong>Fairness</strong>: SLURM job queues aim to share compute resources fairly among all users.</li>
+<li><strong>Efficiency</strong>: short, repetitive jobs can be parallelised (e.g. <a href="https://help.jasmin.ac.uk/docs/batch-computing/slurm-queues/">JASMIN allows users to submit up to 2000 jobs at once</a>)</li>
+</ul>
+<h2 id="basics">Basics</h2>
+<p>Jobs can be submitted to the queue through the <code>sbatch</code> command in the terminal.</p>
+<pre><code class="language-bash">sbatch myjobscript.sh
+</code></pre>
+<p>The <code>myjobscript.sh</code> file contains two things:
+- <strong>SLURM directives</strong>: information to pass to the SLURM queue about the type of job that you are submitting. These are prefixed by <code>#SBATCH</code> and are placed at the top of the jobscript.
+- <strong>Your job</strong>: a list of instructions for the computer to perform after the job is finished waiting in the queue.</p>
+<p>A minimal jobscript file to run some Python code might look something like:</p>
+<pre><code class="language-bash">#!/bin/bash
+#SBATCH --job-name=python_job   # Job name
+#SBATCH --time=01:00:00         # Request runtime (hh:mm:ss)
+#SBATCH --mem=1G                # Request memory
+
+# Executable
+python mycode.py
+</code></pre>
+<p>Note that if you don't request enough time and/or memory, the job will be terminated early when these resources run out. However, the more you request, the longer you are likely to be queued. Consistently requesting too many resources will often reduce the priority you hold in the system, making all your jobs queue longer.</p>
+<p>After submitting, you can check the status of your queued jobs using the <code>squeue</code> command, followed by your username (otherwise you see <em>everyone's</em> jobs).</p>
+<pre><code class="language-bash">squeue -u $USER
+</code></pre>
+<h2 id="job-template-for-jasmin">Job Template (for JASMIN)</h2>
+<p>Complex code with lots of tasks can quickly result in messy jobdecks. It can be hard to understand what's going on in these and make appropriate changes without introducing bugs. I've put together a template jobscript, designed for submissions to the JASMIN SLURM queue. I hope it's useful and please let me know if you have any suggestions to improve it!</p>
+<pre><code class="language-bash">#!/bin/bash
+###############################################################################
+# SLURM Job Script
+###############################################################################
+
+#SBATCH --job-name=&quot;xxx&quot;            # Replace &quot;xxx&quot; with your job name
+#SBATCH --time=00:01:00             # Set the time limit for the job (HH:MM:SS)
+#SBATCH --mem=100M                  # Set the memory limit for the job
+#SBATCH --account=xxx               # Set to the appropriate group workspace
+#SBATCH --partition=debug           # standard or debug
+#SBATCH --qos=debug                 # debug. standard, short, long, high. (see https://help.jasmin.ac.uk/docs/batch-computing/slurm-queues/)
+#SBATCH -o %x_%j.out                # output file (print statements saved in here)
+#SBATCH -e %x_%j.err                # error file (error details saved in here)
+
+###############################################################################
+#  0. JOB INFORMATION
+###############################################################################
+
+# Assumes code saved in ~/project/scripts/
+HOME_DIR=&quot;/home/users/xxx&quot;          # Replace xxx with your username
+PROJECT=&quot;project_wetland&quot;           # Replace with your project name
+SCRIPT_DIR=&quot;${HOME_DIR}/${PROJECT}/scripts&quot;
+SCRIPT_NAME=&quot;test_job.py&quot;           # Replace with your script name
+
+# Arguments passed to the script, if needed
+# : &quot;${INPUT_1:?Error: INPUT_1 variable not set. Use sbatch --export=INPUT_1=input_1 xxx.sh}&quot;
+# INPUT_1=$1
+# INPUT_2=$2
+
+JOB_TIME=$(date +&quot;%Y-%m-%d_%H-%M-%S&quot;)
+
+echo &quot;========== SLURM JOB INFO ==========&quot;
+echo &quot;Job Name:   ${SLURM_JOB_NAME}&quot;
+echo &quot;Job ID:     ${SLURM_JOB_ID}&quot;
+echo &quot;User:       ${USER}&quot;
+echo &quot;Node List:  ${SLURM_NODELIST}&quot;
+echo &quot;CPUs:       ${SLURM_CPUS_ON_NODE:-N/A}&quot;
+echo &quot;Memory:     ${SLURM_MEM_PER_NODE:-N/A} MB&quot;
+echo &quot;Start Time: ${JOB_TIME}&quot;
+echo &quot;====================================&quot;
+
+###############################################################################
+#  1. LOAD MODULES &amp; ENVIRONMENT
+###############################################################################
+
+# 1.1 jaspy environment setup                      &lt;-- Uncomment if using Jaspy
+# module load jaspy
+
+# 1.2 conda environment setup                      &lt;-- Uncomment if using conda
+# source ~/miniforge3/bin/activate
+# conda activate xxx                    # Replace xxx with environment name
+# echo &quot;Current Conda environment: $CONDA_DEFAULT_ENV&quot;
+
+###############################################################################
+#  2. RUN SCRIPT
+###############################################################################
+
+echo &quot;Starting main job script...&quot;
+SECONDS=0
+
+# Run the Python script                            &lt;-- Uncomment and modify arguments if needed
+python ${SCRIPT_DIR}/${SCRIPT_NAME} # --input1 &quot;$INPUT_1&quot; --input2 &quot;$INPUT_2&quot;
+
+# Smart runtime display
+runtime=$SECONDS
+if [ $runtime -lt 60 ]; then
+    echo &quot;Job finished in ${runtime} seconds&quot;
+elif [ $runtime -lt 3600 ]; then
+    mins=$(( runtime / 60 ))
+    secs=$(( runtime % 60 ))
+    echo &quot;Job finished in ${mins} min ${secs} sec&quot;
+else
+    hours=$(( runtime / 3600 ))
+    mins=$(( (runtime % 3600) / 60 ))
+    echo &quot;Job finished in ${hours} hr ${mins} min&quot;
+fi
+
+###############################################################################
+#  3. CLEANUP
+###############################################################################
+
+# 3.2 conda environment cleanup                    &lt;-- Uncomment if using conda
+# conda deactivate
+# conda deactivate
+
+# move output and error files to logs directory
+LOGFILE_NAME=&quot;${SLURM_JOB_NAME}_${SLURM_JOB_ID}&quot;
+mv $LOGFILE_NAME.out ${HOME_DIR}/${PROJECT}/jobs/logs/out/${LOGFILE_NAME}_${JOB_TIME}.out
+# Handle error file: delete if empty, else move
+if [ -s &quot;${LOGFILE_NAME}.err&quot; ]; then
+    mv &quot;${LOGFILE_NAME}.err&quot; &quot;${HOME_DIR}/${PROJECT}/jobs/logs/err/${SLURM_JOB_NAME}_${DATE}.err&quot;
+else
+    echo &quot;No errors found — deleting empty .err file.&quot;
+    rm -f &quot;${LOGFILE_NAME}.err&quot;
+fi
+</code></pre>
+<h2 id="advanced-tips">Advanced tips</h2>
+<h3 id="simplifying-queue-checking">Simplifying queue checking</h3>
+<p>I like to create an alias in my <code>.bashrc</code> file to simplify queue checking.</p>
+<pre><code class="language-bash">alias q=&quot;squeue -u $USER&quot;
+</code></pre>
+<p>I can then check my jobs in the queue by simply typing <code>q</code> into the terminal.</p>
+<h3 id="stats-on-completed-jobs">Stats on completed jobs</h3>
+<p>To get the resource usage information from a complete job, you can use the <code>seff</code> command in combination with the job id. This can help you tailor the memory and time you request for jobs.</p>
+<pre><code class="language-bash">seff &lt;job ID&gt;
+</code></pre>
+<h3 id="arguments-for-jobs">Arguments for jobs</h3>
+<h3 id="jobscript-wrappers">Jobscript wrappers</h3>
+<p>When I want to submit a large number of jobs to be run in parallel, I will write a jobscript and then also write a "wrapper" script to submit this job lots of times (e.g. for different days). An example for submitting daily jobs between a specified start and end date is shown below:</p>
+<pre><code class="language-bash">#!/bin/bash
+# daily_job_wrapper.sh
+# Usage: ./daily_job_wrapper.sh START_DATE END_DATE
+# Example: ./daily_job_wrapper.sh 2021-09-01 2021-10-31
+# Note: If END_DATE is not provided, it defaults to START_DATE (i.e. single day)
+
+START_DATE=$1
+END_DATE=${2:-$START_DATE}
+
+curr=$START_DATE
+while [[ $(date -d &quot;$curr&quot; +%s) -le $(date -d &quot;$END_DATE&quot; +%s) ]]; do
+  # Format into DD-MM-YYYY for daily_job.sh
+  DATE=$(date -d &quot;$curr&quot; +%d-%m-%Y)
+  echo &quot;Submitting job for $DATE&quot;
+  sbatch --export=DATE=&quot;$DATE&quot; apply_AKs.sh
+  curr=$(date -I -d &quot;$curr + 1 day&quot;)  # advance by one calendar day
+done
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/leeds-bag/bag_wiki" class="fa fa-code-fork" style="color: #fcfcfc"> leeds-bag/bag_wiki</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
