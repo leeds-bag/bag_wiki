@@ -19,6 +19,7 @@ nav:
       - Speedy Python with Dask: dask_demo.md
       - Using Globus: globus.md
       - Transferring Data via SFTP: Transferring_data_using_SFTP.md
+      - Guide to SLURM: SLURM_guide.md
     
   - General tips:
       - Printing A1: printing.md
