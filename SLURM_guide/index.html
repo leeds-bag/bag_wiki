@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Guide to SLURM Job Queuing - Leeds BAG Wiki</title>
+    <title>Guide to SLURM - Leeds BAG Wiki</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Guide to SLURM Job Queuing";
+        var mkdocs_page_name = "Guide to SLURM";
         var mkdocs_page_input_path = "SLURM_guide.md";
         var mkdocs_page_url = null;
       </script>
@@ -44,7 +44,7 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Computing tips and guides</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../python_quick_start/">Python Quick Start</a>
@@ -60,6 +60,30 @@
                   <li class="toctree-l1"><a class="reference internal" href="../globus/">Using Globus</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Transferring_data_using_SFTP/">Transferring Data via SFTP</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Guide to SLURM</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-slurm">What is SLURM?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why-use-slurm">Why use SLURM?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#basics">Basics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#job-template-for-jasmin">Job Template (for JASMIN)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#advanced-tips">Advanced tips</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#simplifying-queue-checking">Simplifying queue checking</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stats-on-completed-jobs">Stats on completed jobs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#arguments-for-jobs">Arguments for jobs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jobscript-wrappers">Jobscript wrappers</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">General tips</span></p>
@@ -83,7 +107,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Guide to SLURM Job Queuing</li>
+          <li class="breadcrumb-item">Computing tips and guides</li>
+      <li class="breadcrumb-item active">Guide to SLURM</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/SLURM_guide.md">Edit on leeds-bag/bag_wiki</a>
     </li>
@@ -255,6 +280,10 @@ done
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Transferring_data_using_SFTP/" class="btn btn-neutral float-left" title="Transferring Data via SFTP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../printing/" class="btn btn-neutral float-right" title="Printing A1">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -280,6 +309,10 @@ done
         </span>
     
     
+      <span><a href="../Transferring_data_using_SFTP/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../printing/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
