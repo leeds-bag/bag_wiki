@@ -20,6 +20,7 @@ nav:
       - Using Globus: globus.md
       - Transferring Data via SFTP: Transferring_data_using_SFTP.md
       - Guide to SLURM: SLURM_guide.md
+      - Modern Fortran: modern_fortran.md
     
   - General tips:
       - Printing A1: printing.md
