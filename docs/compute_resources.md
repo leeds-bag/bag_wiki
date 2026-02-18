@@ -2,6 +2,8 @@
 
 Author: Callum Smith, Feb 2026 (last updated: Feb 2026)
 
+*This guide is a suggested best method for utilising the FOE compute resources, edits welcome!*
+
 The following guide provides info on connecting to our available remote machines at the command line. A more detailed guide on connecting using VS Code is also available.
 
 The guide also details how to navigate to several popular BAG storage disks.
