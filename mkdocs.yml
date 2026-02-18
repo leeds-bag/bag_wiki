@@ -13,6 +13,7 @@ nav:
   - Computing tips and guides:
       - Linux Cheat Sheet: linux_cheat_sheet.md
       - Python Quick Start: python_quick_start.md
+      - BAG Approved Remote Access: compute_resources.md
       - Using VSCode: VSCode_guide.md
       - Mamba Set Up: conda_setup.md
       - Regridding with Python: how_to_regrid_xesmf_tutorial.md
