@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Modern Fortran - Leeds BAG Wiki</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Modern Fortran";
+        var mkdocs_page_input_path = "modern_fortran.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Leeds BAG Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Computing tips and guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../python_quick_start/">Python Quick Start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VSCode_guide/">Using VSCode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../conda_setup/">Mamba Set Up</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../how_to_regrid_xesmf_tutorial/">Regridding with Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dask_demo/">Speedy Python with Dask</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../globus/">Using Globus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Transferring_data_using_SFTP/">Transferring Data via SFTP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SLURM_guide/">Guide to SLURM</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Modern Fortran</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-fortran">What is Fortran?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why-use-fortran">Why use fortran?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-minimise-the-pain">How to minimise the pain</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setting-up">Setting Up</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-starting">1) Starting</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-create-a-fortran-environment">2) Create a Fortran environment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-tell-vs-code-where-the-packages-are">3) Tell VS Code where the packages are</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-add-a-ruler">4) Add a ruler</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#further-reading">Further reading</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">General tips</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../printing/">Printing A1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../paper_writing/">Writing Academic Papers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Leeds BAG Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Computing tips and guides</li>
+      <li class="breadcrumb-item active">Modern Fortran</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/modern_fortran.md">Edit on leeds-bag/bag_wiki</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dragging-fortran-kicking-and-screaming-into-the-21st-century">Dragging Fortran kicking and screaming into the 21st Century</h1>
+<p>Author: Ben Bradley, Feb 2026 (last updated: Feb 2026)</p>
+<h2 id="what-is-fortran">What is Fortran?</h2>
+<p>Fotran is one of the first programming languages, wiht the first versions dating back to the 50's. It is a compiled language, which means code is compiled to faster machine code before it can be run (unlike Python which is compiled just-in-time). It has been used extensively in scientific modelling for many decades, and will likely continue to be used for some time still.</p>
+<h2 id="why-use-fortran">Why use fortran?</h2>
+<ul>
+<li><strong>Speed</strong>:        Fortran is much faster than Python and other high-level languages</li>
+<li><strong>Legacy</strong>:       many established scientific models use Fortran, making it essential for adding to or modifying the existing codebase</li>
+<li><strong>Self-hatred</strong>:  you're some sort of masochist who enjoys declaring the types of all variables</li>
+</ul>
+<h2 id="how-to-minimise-the-pain">How to minimise the pain</h2>
+<p>If you find yourself in the unenviable situation of needing to code in fortran, do not dispair! You don't have to code in the terminal like some sort of caveman! VS Code has an extension called <em>Modern Fortran</em> to solve all of your problems. This can provide wonderful features such as:</p>
+<ul>
+<li>Syntax highlighting</li>
+<li>Linting (<em>before</em> compiling!)</li>
+<li>Rulers</li>
+<li>Variable auto-completion</li>
+<li>In-line AI code suggestions</li>
+<li>Easy and intuitive committing of code to GitHub</li>
+<li>All the other <a href="https://leeds-bag.github.io/bag_wiki/VSCode_guide/">lovely features included within VS Code</a>.</li>
+</ul>
+<p><img alt="png" src="../assets/fortran_vscode.png" /></p>
+<h2 id="setting-up">Setting Up</h2>
+<p>I assume here that the reader is already familiar with VS Code and Python Environments (e.g. Miniforge). If you're not, consult BAG's <a href="https://leeds-bag.github.io/bag_wiki/VSCode_guide/">Guide to VS Code</a> and <a href="https://leeds-bag.github.io/bag_wiki/conda_setup/">Guide to using Mamba via Miniforge</a></p>
+<h3 id="1-starting">1) Starting</h3>
+<p>Open VS Code, ssh into the machine you wish to code on, and open the folder of your project. Install the Modern Fortran extension from the extensions tab.</p>
+<h3 id="2-create-a-fortran-environment">2) Create a Fortran environment</h3>
+<p>Activate conda if you haven't already:</p>
+<pre><code class="language-bash">conda activate
+</code></pre>
+<p>Create a new environment:</p>
+<pre><code class="language-bash">mamba create -n fortran
+</code></pre>
+<p>Activate your new environment:</p>
+<pre><code class="language-bash">conda activate fortran
+</code></pre>
+<p>Install the fortls and gfortran packages:</p>
+<pre><code class="language-bash">mamba install fortls gfortran
+</code></pre>
+<h3 id="3-tell-vs-code-where-the-packages-are">3) Tell VS Code where the packages are</h3>
+<p>Open the settings.json file by hitting <code>Ctrl</code>+<code>Shift</code>+<code>P</code> and typing json into the search bar that opens up. Click on "Preferences: Open Remote Settings (JSON) (SSH: [machine])" if you're connected to a remote machine.
+Add the following to the file (which is likely empty):</p>
+<pre><code class="language-json">{
+    &quot;fortran.fortls.path&quot;: &quot;[mypath]/miniforge3/envs/fortran/bin/fortls&quot;,
+    &quot;fortran.linter.compiler&quot;: &quot;gfortran&quot;,
+    &quot;fortran.linter.compilerPath&quot;: &quot;[mypath]/miniforge3/envs/fortran/bin/gfortran&quot;,
+    &quot;fortran.formatting.formatter&quot;: &quot;fprettify&quot;,
+    &quot;fortran.linter.includePaths&quot;: &quot;[mypath]/miniforge3/envs/fortran/include&quot;,
+}
+</code></pre>
+<p>Replace mypath with the path to your Miniforge directory.</p>
+<h3 id="4-add-a-ruler">4) Add a ruler</h3>
+<p>Old versions of Fortran have a strict character limit for lines of code, and can fail to compile code after this limit. To avoid these errors and to help keep code to best practices, I like to add a ruler to the screen at the character limit.</p>
+<pre><code class="language-json">{
+    &quot;editor.overtypeCursorStyle&quot;: &quot;line&quot;,
+    &quot;terminal.integrated.defaultProfile.windows&quot;: &quot;Git Bash&quot;,
+    &quot;[FortranFreeForm]&quot;: {
+        &quot;editor.rulers&quot;: [132]
+    },
+    &quot;workbench.colorCustomizations&quot;: {
+        &quot;editorRuler.foreground&quot;: &quot;#458cff&quot;
+    },
+}
+</code></pre>
+<h2 id="further-reading">Further reading</h2>
+<p>Modern Fortran is an excellent VS Code extension, more details of the features it offers can be found
+<a href="https://marketplace.visualstudio.com/items?itemName=fortran-lang.linter-gfortran">here</a>.</p>
+<p>This guide draws from a series of excellent YouTube videos by Lukas Lamm.
+If you want to dive deeper into the points discussed here or learn more about compiling and running fortran within VS Code,
+I recommend checking out his videos <a href="https://www.youtube.com/playlist?list=PLcRWSCuguB4RajDON1480xRa5EQ4w2_F0">here</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../SLURM_guide/" class="btn btn-neutral float-left" title="Guide to SLURM"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../printing/" class="btn btn-neutral float-right" title="Printing A1">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/leeds-bag/bag_wiki" class="fa fa-code-fork" style="color: #fcfcfc"> leeds-bag/bag_wiki</a>
+        </span>
+    
+    
+      <span><a href="../SLURM_guide/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../printing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
