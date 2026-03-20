@@ -73,15 +73,15 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#setting-up">🏗️ Setting Up</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1-university-vpn">1) University VPN</a>
+    <li class="toctree-l3"><a class="reference internal" href="#1-installing-vs-code">1) Installing VS Code</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-installing-vs-code">2) Installing VS Code</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3-config-file">3) config file</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-config-file">2) config file</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#4-ssh-into-remote-machine">4) ssh into remote machine</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#5-set-up-an-environment-manager">5) Set up an environment manager</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#1-if-using-university-vpn">1) If using University VPN</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#for-taught-students-eg-masters-or-undergraduate-students">⚠️For taught students (e.g. Master's or Undergraduate students):</a>
     </li>
@@ -139,7 +139,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="guide-to-vs-code">Guide to VS Code</h1>
-<p>Author: Ben Bradley, March 2025 (last updated: Feb 2026)</p>
+<p>Author: Ben Bradley, March 2025 (last updated: Mar 2026)</p>
 <h2 id="introduction">🏁 Introduction</h2>
 <p><em>This document is intended as a guide to modern programming for researchers and students within the School of Earth and Environment, primarily using Python and VS Code.</em></p>
 <p>Throughout, I draw upon the expertise shared in the following sources:
@@ -195,37 +195,28 @@ shareable? This is where more complete IDEs like VS Code come in!</p>
 <p>Hopefully this convinces you that VS Code is worth the effort to set up and use for day-to-day coding tasks. We'll explore
 <em>how</em> to set this up in the following section.</p>
 <h2 id="important-a-note-on-vs-code-compatibility">⚠️ IMPORTANT: A Note on VS Code Compatibility</h2>
-<p>At the moment, the university is transitioning its "general compute" resource for the faculty of environment from the old foe-linux
-machines that run on CentOS to modern machines run with RedHat9. The old machines have outdated software, requiring a downgrade to
-version 1.98 of VS Code to enable use. The new machines are, as of 06/10/2025, not fully configured and still have some problems.</p>
+<p>As of March 2026, the university has transitioned its "general compute" resource for the faculty of environment from the old foe-linux
+machines (foe-linux-0x)) that run on CentOS to modern machines (uol-gen-res-xx) run with RedHat9. The old machines have outdated software, requiring a downgrade to
+version 1.98 of VS Code to enable use. The new machines are largely operational and available to use.</p>
 <p>New and existing users therefore have a choice of two paths, both of which are described in this guide:
-1) Downgrade VS Code and make use of the more reliable old machines, with some potential hiccups from VS Code and its extensions to navigate
-2) Install the latest version of VS Code and be prepared to report some problems as the system is set up (contact Steve Arnold for this).</p>
-<p>It is currently recommended to choose option 1, but all researchers will eventually need to migrate to the new system.</p>
+1) RECOMMENDED: Using the latest remote machines, install the latest version of VS Code and enjoy with with no known problems.
+2) Continue using "old" machines and downgrade VS Code (v1.98), with some potential hiccups from VS Code and its extensions to navigate</p>
+<p>All researchers will eventually need to migrate to the new system, so it recommended to take path 1.</p>
 <h2 id="setting-up">🏗️ Setting Up</h2>
-<h3 id="1-university-vpn">1) University VPN</h3>
-<ol type="a">
-  <li>At the time of writing there are two types of university VPN: PulseSecure and Ivanti Secure Access. One of these is needed to connect to university systems remotely.</li>
-
-  <ol type="i">
-    <li>Already installed</li>
-      <p>If you have a university computer, the VPN may be pre-installed. For Windows, check by going to the start menu and typing “Pulse Secure” or "Ivanti Secure Access".</p>
-    <li>Uni laptop but not pre-installed</li>
-      <p>If PulseSecure isn’t already available, it can be installed via Company Portal. Search the start menu for “Company Portal”. PulseSecure should be listed under the 'Apps' section.</p>
-    <li>Personal computer</li>
-      <p>Go to the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">University of Leeds VPN guide</a>. Under attachments to the right of the screen, there is a list of VPN versions you can download. Select the appropriate download for your operating system and follow the setup wizard instructions.    
-  </ol>
-
-![png](assets/PulseSecure_download.png)
-
-  <li>Once you have the VPN installed, follow the instructions on the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">VPN guide</a>, which detail how to connect.</li>
-</ol>
-
-<p><em>(n.b. an alternative method to this is to use the rash jump server: I have found this way requires more passwords and a Duo sign-in, but university IT plans to switch to this method at some point. A guide for using rash can be found here: <a href="https://bjsilver.github.io/bag_wiki/docs/remote_access/SSH_configs.html">BAG guide to rash</a>)</em></p>
-<h3 id="2-installing-vs-code">2) Installing VS Code</h3>
+<h3 id="1-installing-vs-code">1) Installing VS Code</h3>
 <ol type="a">
   <li>Install VS Code</li>
-    <p>It is recommended to download <a href="https://code.visualstudio.com/updates/v1_98" target="_blank">VSCode version 1.98</a> on a local PC if you plan to use the old foe-linux machines. (If using the new foe-linux-cpu machines, simply download the latest version <a href="https://code.visualstudio.com/" target="_blank">here</a> and ignore the rest of this step). When you download an outdated version of VSC (e.g. February 2025, version 1.98) make sure you are downloading the version from the third line in the page, not from the more interesting blue button (this is the latest version, the name is in the downloaded file anyway). Additionally, to avoid VS Code auto-updating the next day, follow the next steps:
+    <p>If using the latest machines (uol-gen-res-xx), download the latest VSCode version from the internet. If you are using the older machines, follow the instructions below to download an older version of VSCode. 
+      Once downloaded, open and familirise yourself. To make use of the coding ability and remote access, you'll need the following "Extensions":
+      <ol type="i">
+        <li>Jupyter</li>
+        <li>Python</li>
+        <li>Pylance</li>
+        <li>Remote SSH</li>
+      </ol>
+      There are thousands of other extensions you can download to enhance your experience, but these are the essentials.
+    </p>
+    <p>If using the older machines: it is recommended to download <a href="https://code.visualstudio.com/updates/v1_98" target="_blank">VSCode version 1.98</a> on a local PC. (If using the new foe-linux-cpu machines, simply download the latest version <a href="https://code.visualstudio.com/" target="_blank">here</a> and ignore the rest of this step). When you download an outdated version of VSC (e.g. February 2025, version 1.98) make sure you are downloading the version from the third line in the page, not from the more interesting blue button (this is the latest version, the name is in the downloaded file anyway). Additionally, to avoid VS Code auto-updating the next day, follow the next steps:
     <ol type="i">
       <li>Open Settings by pressing <code>Ctrl</code>+<code>,</code></li>
       <li>Type "update mode" in the search bar</li>
@@ -247,8 +238,8 @@ version 1.98 of VS Code to enable use. The new machines are, as of 06/10/2025, n
 <p><img alt="png" src="../assets/VSCode_extensions.png" /></p>
 <!-- <img src="assets/VSCode_extensions.png" alt="png" width="600"/> -->
 
-<h3 id="3-config-file">3) config file</h3>
-<p>To ssh easily into remote machines like foe-linux, it's easiest to create a config file containing the details of the ssh connections you want to make. This is a file called <code>config</code> stored in the <code>.ssh</code> folder of your local machine. For linux users, the full path location will simply be <code>~/.ssh/config</code>. For Windows users, this might be in a different location but you'll likely have a <code>.ssh</code> folder somewhere. For instance, the path to mine is <code>C:\Users\{my username}\.ssh\config</code>. Whether you can find it in your file explorer or not, you'll be able to edit your config file in VS Code. In short:</p>
+<h3 id="2-config-file">2) config file</h3>
+<p>To ssh easily into remote machines like uol-gen-res-03, it's easiest to create a config file containing the details of the ssh connections you want to make. This is a file called <code>config</code> stored in the <code>.ssh</code> folder of your local machine. For linux users, the full path location will simply be <code>~/.ssh/config</code>. For Windows users, this might be in a different location but you'll likely have a <code>.ssh</code> folder somewhere. For instance, the path to mine is <code>C:\Users\{my username}\.ssh\config</code>. Whether you can find it in your file explorer or not, you'll be able to edit your config file in VS Code. In short (more comprehensive details available at https://leeds-bag.github.io/bag_wiki/compute_resources/):</p>
 <ol type="a">
   <li>open the command pallete using <code>Ctrl</code>+<code>Shift</code>+<code>P</code>.</li>
   <li>search for "Remote - SSH". An option to open a config file should appear.</li>
@@ -258,42 +249,33 @@ version 1.98 of VS Code to enable use. The new machines are, as of 06/10/2025, n
 <!-- <img src="assets/open_config.png" alt="png" width="600"/> -->
 
 <ol type="a"> 
-  <li>Specify connections to at least a foe-linux server and additionally to a machine on foe-linux (silloth, lytham, uptonpark, etc.) by copying the text below. </li>
+  <li>Specify connections to at least a uol-gen-res-xx server (or foe-linux-0x if using older machines) and additionally the university access server (rash) by copying the text below. </li>
   <li>Save the config file, close VS Code and reopen.</li>
 </ol>
 
-<pre><code>Host foe
-    HostName foe-linux-01.leeds.ac.uk    # change to a different foe-linux server if you want (e.g. foe-linux-02)
+<pre><code>Host foecpu
+    HostName uol-gen-res-03.leeds.ac.uk    # change to a different server if you want (e.g. uol-gen-res-04)
     ForwardX11Trusted yes
     ForwardAgent yes
-    User (username)                      # change to your username
+    User username                      # change to your username
     TCPKeepAlive no
     RequestTTY force
 
-Host (machine_name)                      # change to the machine you want to connect to
-    HostName (machine_name).leeds.ac.uk  # change to the machine you want to connect to
+Host rash                                # this is a jump server used as an alternative to a VPN connection, requires Duo authentication
+    User username
+    HostName rash.leeds.ac.uk
+    ServerAliveInterval 60
+    ServerAliveCountMax 90
+    ForwardX11 yes
     ForwardX11Trusted yes
-    User (username)                      # change to your username
     ForwardAgent yes
-    TCPKeepAlive no
-    ProxyJump foe
-    RequestTTY force
+    ControlPath ~/.ssh/sockets/%r@%h:%p
+    ControlMaster auto
+    ControlPersist 12h
 
 ###################################################
 # some other useful hosts
 ###################################################
-
-Host rash                                # this is a jump server used as an alternative to a VPN connection, requires Duo authentication
-  User (username)
-  HostName rash.leeds.ac.uk
-  ServerAliveInterval 60
-  ServerAliveCountMax 90
-  ForwardX11 yes
-  ForwardX11Trusted yes
-  ForwardAgent yes
-  ControlPath ~/.ssh/sockets/%r@%h:%p
-  ControlMaster auto
-  ControlPersist 12h
 
 Host JASMIN-sci                          # requires setting up ssh keys
   Hostname sci-vm-04.jasmin.ac.uk
@@ -306,22 +288,11 @@ Host JASMIN-ph                           # requires setting up ssh keys
   User (username)
   ProxyJump (username)@login-01.jasmin.ac.uk
   ForwardAgent yes
-
-Host foe-cpu
-  User (username)
-  HostName foe-linux-cpu.leeds.ac.uk
-  ServerAliveInterval 60
-  ServerAliveCountMax 90
-  ForwardX11 yes
-  ForwardX11Trusted yes
-  ForwardAgent yes
-  ProxyJump rash.leeds.ac.uk
 </code></pre>
 <p>Notes:
 - <strong>Remember</strong> to change the username with your own and the remote machine with one you want to access!
 - See the BAG Guides to <a href="https://bjsilver.github.io/bag_wiki/docs/remote_access/SSH_configs.html">SSH config files</a>, <a href="https://bjsilver.github.io/bag_wiki/docs/remote_access/SSH_key_pairs.html">SSH Keys</a>, and <a href="https://bjsilver.github.io/bag_wiki/docs/remote_access/vscode.html">VS Code</a> for more details.
 - If you find VS Code is timing out before connecting, you can change the "Connect Timeout" value in "Remote - SSH: Settings". <a href="https://bjsilver.github.io/bag_wiki/docs/remote_access/vscode.html">The BAG guide to VS Code</a> tips section says setting this parameter to around 1080 should solve this (it did for me).
-- If you decide to use rash instead of the University VPN, you will need to add it as a host to your config file and ProxyJump through rash to connect to foe (see <a href="https://bjsilver.github.io/bag_wiki/docs/remote_access/SSH_configs.html">BAG wiki article</a>).
 - You could try to combine <a href="https://bjsilver.github.io/bag_wiki/docs/remote_access/SSH_key_pairs.html">ssh keys</a> with this sign in method to reduce the number of passwords required, but as of writing I have not attempted this.</p>
 <h3 id="4-ssh-into-remote-machine">4) ssh into remote machine</h3>
 <ol type="a">
@@ -412,6 +383,25 @@ Host foe-cpu
   Create a code cell and add some simple code.
 
   In the top right of the screen, click the "Select Kernel" button. Under "Python Environments" you should find the environment you created earlier with notebook installed. Once this is selected, run the code cell: it should run.</p>
+</ol>
+
+<h3 id="1-if-using-university-vpn">1) If using University VPN</h3>
+<ol type="a">
+  <li>You no longer need a VPN to access the remote machines and it more stable to access them using rash, so it isn't recommended to use the VPN, however instructions below are available if you need them.</li>
+  <li>At the time of writing there are two types of university VPN: PulseSecure and Ivanti Secure Access. One of these is needed to connect to university systems remotely.</li>
+
+  <ol type="i">
+    <li>Already installed</li>
+      <p>If you have a university computer, the VPN may be pre-installed. For Windows, check by going to the start menu and typing “Pulse Secure” or "Ivanti Secure Access".</p>
+    <li>Uni laptop but not pre-installed</li>
+      <p>If PulseSecure isn’t already available, it can be installed via Company Portal. Search the start menu for “Company Portal”. PulseSecure should be listed under the 'Apps' section.</p>
+    <li>Personal computer</li>
+      <p>Go to the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">University of Leeds VPN guide</a>. Under attachments to the right of the screen, there is a list of VPN versions you can download. Select the appropriate download for your operating system and follow the setup wizard instructions.    
+  </ol>
+
+![png](assets/PulseSecure_download.png)
+
+  <li>Once you have the VPN installed, follow the instructions on the <a href="https://it.leeds.ac.uk/it?id=kb_article_view&table=kb_knowledge&sys_kb_id=1682f199fbd426d08d23ff40aeefdc14&searchTerm=vpn&spa=1" target="_blank">VPN guide</a>, which detail how to connect.</li>
 </ol>
 
 <h4 id="for-taught-students-eg-masters-or-undergraduate-students">⚠️For taught students (e.g. Master's or Undergraduate students):</h4>
