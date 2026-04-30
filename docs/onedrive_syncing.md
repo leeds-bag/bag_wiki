@@ -25,10 +25,10 @@ But watch out! If you locally delete a file then "sync" it will be deleted from 
 
 
 ### Syncing script
-To make synchronising files safe and easy I collaborated with an AI to make a script called [`figsync`](../scripts/figsync). This script lets you sync any local folder with any OneDrive folder. For each pair of folders you define an alias to make it quick and easy to sync. 
+To make synchronising files safe and easy I collaborated with an AI to make a script called [`figsync`](/scripts/figsync). This script lets you sync any local folder with any OneDrive folder. For each pair of folders you define an alias to make it quick and easy to sync. 
 
 #### Setup
-1. copy [the script](../scripts/figsync) and paste it into a file called `figsync` (or anything else) in `~/.local/bin/`
+1. copy [the script](/scripts/figsync) and paste it into a file called `figsync` (or anything else) in `~/.local/bin/`
 2. `chmod 777` the script so it can be run from the command line
 3. Point `figsync` at your local folder of figures (or anything else) by editing `LOCAL_BASE` at the top of the file. In that folder, create folders where you can save figures. Each folder name can be an alias for each of your different projects.
 4. create a file `touch ~/.sync_aliases` where you define the folders and their aliases e.g.
