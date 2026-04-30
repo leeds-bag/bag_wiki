@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Onedrive transfer - Leeds BAG Wiki</title>
+    <title>Easy OneDrive syncing - Leeds BAG Wiki</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Onedrive transfer";
-        var mkdocs_page_input_path = "onedrive_transfer.md";
+        var mkdocs_page_name = "Easy OneDrive syncing";
+        var mkdocs_page_input_path = "onedrive_syncing.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -44,7 +44,7 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Computing tips and guides</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../python_quick_start/">Python Quick Start</a>
@@ -66,6 +66,22 @@
                   <li class="toctree-l1"><a class="reference internal" href="../SLURM_guide/">Guide to SLURM</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../modern_fortran/">Modern Fortran</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Easy OneDrive syncing</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setting-up-rclone">Setting up Rclone</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#simple-rclone-commands">Simple Rclone commands</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#syncing-script">Syncing script</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">General tips</span></p>
@@ -89,9 +105,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Onedrive transfer</li>
+          <li class="breadcrumb-item">Computing tips and guides</li>
+      <li class="breadcrumb-item active">Easy OneDrive syncing</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/onedrive_transfer.md">Edit on leeds-bag/bag_wiki</a>
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/onedrive_syncing.md">Edit on leeds-bag/bag_wiki</a>
     </li>
   </ul>
   <hr/>
@@ -119,10 +136,10 @@ rclone sync /home/user/Music onedrive:Music
 <p>[!WARNING]
 But watch out! If you locally delete a file then "sync" it will be deleted from OneDrive (although you can restore deleted files on OneDrive)</p>
 <h3 id="syncing-script">Syncing script</h3>
-<p>To make synchronising files safe and easy I collaborated with an AI to make a script called <a href="../scripts/figsync"><code>figsync</code></a>. This script lets you sync any local folder with any OneDrive folder. For each pair of folders you define an alias to make it quick and easy to sync. </p>
+<p>To make synchronising files safe and easy I collaborated with an AI to make a script called <a href="/scripts/figsync"><code>figsync</code></a>. This script lets you sync any local folder with any OneDrive folder. For each pair of folders you define an alias to make it quick and easy to sync. </p>
 <h4 id="setup">Setup</h4>
 <ol>
-<li>copy <a href="../scripts/figsync">the script</a> and paste it into a file called <code>figsync</code> (or anything else) in <code>~/.local/bin/</code></li>
+<li>copy <a href="/scripts/figsync">the script</a> and paste it into a file called <code>figsync</code> (or anything else) in <code>~/.local/bin/</code></li>
 <li><code>chmod 777</code> the script so it can be run from the command line</li>
 <li>Point <code>figsync</code> at your local folder of figures (or anything else) by editing <code>LOCAL_BASE</code> at the top of the file. In that folder, create folders where you can save figures. Each folder name can be an alias for each of your different projects.</li>
 <li>create a file <code>touch ~/.sync_aliases</code> where you define the folders and their aliases e.g.</li>
@@ -152,6 +169,10 @@ Or if I want to pull (OneDrive to local) or push (local to OneDrive) only I can 
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../modern_fortran/" class="btn btn-neutral float-left" title="Modern Fortran"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../printing/" class="btn btn-neutral float-right" title="Printing A1">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -177,6 +198,10 @@ Or if I want to pull (OneDrive to local) or push (local to OneDrive) only I can 
         </span>
     
     
+      <span><a href="../modern_fortran/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../printing/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
