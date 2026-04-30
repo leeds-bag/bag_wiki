@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Mounting onedrive - Leeds BAG Wiki</title>
+    <title>Onedrive transfer - Leeds BAG Wiki</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Mounting onedrive";
-        var mkdocs_page_input_path = "mounting_onedrive.md";
+        var mkdocs_page_name = "Onedrive transfer";
+        var mkdocs_page_input_path = "onedrive_transfer.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -89,9 +89,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Mounting onedrive</li>
+      <li class="breadcrumb-item active">Onedrive transfer</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/mounting_onedrive.md">Edit on leeds-bag/bag_wiki</a>
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/onedrive_transfer.md">Edit on leeds-bag/bag_wiki</a>
     </li>
   </ul>
   <hr/>
@@ -99,82 +99,56 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="mounting-onedrive-on-a-linux-system">Mounting OneDrive on a Linux system</h2>
-<p><em>Contributors: Ben Silver</em></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">:warning: WARNING</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">This no longer works on new machines (uol-gen-res) as fusermount has been discontinued. On new machines <a href="../onedrive_transfer/">you can do this</a></td>
-</tr>
-</tbody>
-</table>
-<p>Your University of Leeds OneDrive can be 'mounted' in Linux, so the files on
-it can be accessed (almost) as if it was any other directory.</p>
-<p>I find this useful for synchronising scripts and figures across machines. 
-For example, if you are working on a Linux machine, and you save a figure 
-to OneDrive, it will be available (almost) instantly to copy into powerpoint
-if you're also working on a Windows machine.</p>
-<p>Also useful for if you're running scripts on a remote machine, you can edit
-the script locally, your changes will be automatically synchronised with 
-the remote machine.</p>
-<h3 id="do-i-need-to-mount-onedrive">Do I need to 'mount' OneDrive?</h3>
-<p>Please note that mounting OneDrive in this way is only necessary if you are on a Linux
-machine (e.g. <code>foe-linux</code>). If you are in MobaXterm or on WSL, you can just 
-'soft link' OneDrive so it can be easily accessed from your Linux home directory.</p>
-<p>OneDrive can usually be found at <code>C:\Users\[USERNAME]\OneDrive - University of Leeds</code>
-or similar</p>
-<h3 id="1-rclone">1. RClone</h3>
-<p>The first step is to use RClone to setup OneDrive. This step makes it accessible
-on Linux using the <code>rclone</code> command but does not mount it. For this step, <a href="https://it.leeds.ac.uk/it?id=kb_article_view&amp;table=kb_knowledge&amp;sys_kb_id=5cdadc241bb1c950ba670ed0f54bcb04">use the guide 
-IT have written</a> 
-for how to set it up on ARC.</p>
-<p>{: .important-title }</p>
-<blockquote>
-<p>Authentication issues</p>
-<p>If the authentication step (where a browser window pops up for you to login) fails because you are doing it on a remote machine, try following the guidance in the <em>If launching the remote browser does not work</em> section of IT's guide, or using X2Go.</p>
-</blockquote>
-<h3 id="2-mount-automatically">2. Mount automatically</h3>
-<p>{: .important-title }</p>
-<blockquote>
-<p>Guide updated!</p>
-<p>Richard Rigby recommends we don't mount OneDrive in our home directory since it's a networked drive. We can mount it on <code>/dev/shm</code> instead</p>
-</blockquote>
-<p>To mount it automatically each time you login on a Linux machine, create a directory here:<code>/dev/shm/OneDrive-$USER</code>, and add the
-following code to your <code>~/.bashrc</code> file:</p>
-<pre><code class="language-bash"># Automatically mount OneDrive with rclone
-MOUNT_POINT=&quot;/dev/shm/OneDrive-$USER&quot;
-RCLONE_REMOTE=&quot;onedrive&quot; # the name that you gave onedrive when setting up with rclone
-RCLONE_COMMAND=&quot;rclone mount $RCLONE_REMOTE: $MOUNT_POINT --vfs-cache-mode writes --daemon&quot;
-
-# Function to check and mount OneDrive
-mount_onedrive() {
-  if mountpoint -q &quot;$MOUNT_POINT&quot;; then
-    :
-  else
-    echo &quot;Mounting OneDrive...&quot;
-    fusermount -uz &quot;$MOUNT_POINT&quot; 2&gt;/dev/null  # Attempt to unmount if needed
-    $RCLONE_COMMAND
-  fi
-}
-
-# Call the function to mount OneDrive
-mount_onedrive
+                <h2 id="easy-onedrive-syncing-on-linux-machines">Easy OneDrive syncing on linux machines</h2>
+<h3 id="setting-up-rclone">Setting up Rclone</h3>
+<p>We can no longer mount OneDrive on the new Linux machines, but we can still use rclone to access OneDrive. You can setup OneDrive by running </p>
+<pre><code class="language-bash">rclone config
 </code></pre>
-<p>{: .warning }</p>
-<blockquote>
-<p>You will have to create the <code>/dev/shm/OneDrive-$USER</code> on each of the remote machines you plan to use (e.g. <code>foe-linux-01</code>, <code>foe-linux-02</code>, <code>viper</code> etc.)</p>
-</blockquote>
-<p>Finally, create a soft link to <code>/dev/shm/OneDrive-$USER</code> in your home directory so you can easily access OneDrive from there, e.g.</p>
-<pre><code class="language-bash">ln -s /dev/shm/OneDrive-$USER ~/onedrive
+<p>and following the instruction to install it.</p>
+<h3 id="simple-rclone-commands">Simple Rclone commands</h3>
+<p>There are many useful rclone commands that you can use from the command line including </p>
+<pre><code class="language-bash"># list all files in onedrive
+rclone ls onedrive: 
+# copy a file to onedrive Pictures folder
+rclone copy /home/user/photo.jpg onedrive:Pictures
+# download a folder from the cloud
+rclone copy onedrive:ProjectFiles /home/user/Projects
+# synchronise a local folder with the cloud version
+rclone sync /home/user/Music onedrive:Music
 </code></pre>
-<p>This step only needs to be done once (you don't have to do it for each remote machine)</p>
-<p>Once you login and logout, this should work! and you should find <code>onedrive</code>
-in your home directory</p>
+<p>[!WARNING]
+But watch out! If you locally delete a file then "sync" it will be deleted from OneDrive (although you can restore deleted files on OneDrive)</p>
+<h3 id="syncing-script">Syncing script</h3>
+<p>To make synchronising files safe and easy I collaborated with an AI to make a script called <a href="../scripts/figsync"><code>figsync</code></a>. This script lets you sync any local folder with any OneDrive folder. For each pair of folders you define an alias to make it quick and easy to sync. </p>
+<h4 id="setup">Setup</h4>
+<ol>
+<li>copy <a href="../scripts/figsync">the script</a> and paste it into a file called <code>figsync</code> (or anything else) in <code>~/.local/bin/</code></li>
+<li><code>chmod 777</code> the script so it can be run from the command line</li>
+<li>Point <code>figsync</code> at your local folder of figures (or anything else) by editing <code>LOCAL_BASE</code> at the top of the file. In that folder, create folders where you can save figures. Each folder name can be an alias for each of your different projects.</li>
+<li>create a file <code>touch ~/.sync_aliases</code> where you define the folders and their aliases e.g.</li>
+</ol>
+<pre><code class="language-bash">trf:hardknott/aviva/projects/temperate_forestry/figs
+heatwaves:craft/figs/heatwaves
+ibutton:hardknott/figs/ibutton
+elev:hardknott/woodland_elevation
+</code></pre>
+<p>These point to the folders on OneDrive to sync to.</p>
+<h4 id="usage">Usage</h4>
+<p>For example, if I want to sync my <code>trf</code> folder, I simply run on the command line:
+<code>figsync sync trf</code>
+Or if I want to pull (OneDrive to local) or push (local to OneDrive) only I can do
+<code>figsync pull trf</code> or <code>figsync push trf</code></p>
+<p>The script will automatically warn you and require input if files will be deleted as a result. You can also run it with all of the following optional flags:</p>
+<pre><code class="language-bash">Options:
+    -y, --yes       Non-interactive mode (default)
+    -a, --ask       Ask before destructive sync flows
+    -n, --dry-run   Preview changes without writing
+    -u, --update-only
+                     Skip overwriting newer destination files
+    -v, --verbose   Show rclone transfer progress
+    -q, --quiet     Compact check output (summary only)
+    -h, --help      Show this help message
+</code></pre>
               
             </div>
           </div><footer>
