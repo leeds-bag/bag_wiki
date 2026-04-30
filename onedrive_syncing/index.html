@@ -133,8 +133,10 @@ rclone copy onedrive:ProjectFiles /home/user/Projects
 # synchronise a local folder with the cloud version
 rclone sync /home/user/Music onedrive:Music
 </code></pre>
+<blockquote>
 <p>[!WARNING]
 But watch out! If you locally delete a file then "sync" it will be deleted from OneDrive (although you can restore deleted files on OneDrive)</p>
+</blockquote>
 <h3 id="syncing-script">Syncing script</h3>
 <p>To make synchronising files safe and easy I collaborated with an AI to make a script called <a href="/scripts/figsync"><code>figsync</code></a>. This script lets you sync any local folder with any OneDrive folder. For each pair of folders you define an alias to make it quick and easy to sync. </p>
 <h4 id="setup">Setup</h4>
