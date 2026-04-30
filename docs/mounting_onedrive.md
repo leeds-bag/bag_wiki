@@ -1,6 +1,11 @@
 ## Mounting OneDrive on a Linux system
 _Contributors: Ben Silver_
 
+| :warning: WARNING           |
+|:----------------------------|
+| This no longer works on new machines (uol-gen-res) as fusermount has been discontinued. On new machines [you can do this](./onedrive_transfer.md) |
+
+
 Your University of Leeds OneDrive can be 'mounted' in Linux, so the files on
 it can be accessed (almost) as if it was any other directory.
 
