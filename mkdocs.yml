@@ -31,3 +31,6 @@ nav:
 
 plugins:
   - search
+
+markdown_extensions:
+  - admonition

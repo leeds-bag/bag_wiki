@@ -20,8 +20,8 @@ rclone copy onedrive:ProjectFiles /home/user/Projects
 # synchronise a local folder with the cloud version
 rclone sync /home/user/Music onedrive:Music
 ```
-> [!WARNING]
-> But watch out! If you locally delete a file then "sync" it will be deleted from OneDrive (although you can restore deleted files on OneDrive)
+!!! warning
+    But watch out! If you locally delete a file then "sync" it will be deleted from OneDrive (although you can restore deleted files on OneDrive)
 
 
 ### Syncing script
