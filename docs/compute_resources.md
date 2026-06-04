@@ -145,3 +145,17 @@ cd /uolstore/RIT/RITCore/Env/p0106/
 ```
 
 You may not have permissions to access these drives, but if you're in BAG you can ask IT to add you as a user, most likely to p0106.
+
+To do this, fill out the form on IT called ['Shared Drive':](https://it.leeds.ac.uk/it?id=sc_cat_item&sys_id=1edc247e0f7862003274fc4ce1050e3e&table=sc_cat_item&searchTerm=request%20access%20to%20storage%20drive)
+
+You can fill this in like:
+
+Shared Drive Information: <b>/uolstore/RIT/RITCore/Env/p0106/</b>
+
+Please detail why access is required: <b>needed for research</b>
+
+What is your job role? <b>eg PGR</b>
+
+What level of access do you require? <b>Read / Write / Delete</b>
+
+Who can approve your access? <b>Cat Scott</b>
