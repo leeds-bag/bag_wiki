@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Leeds BAG" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Plotting poster-quality maps in Python - Leeds BAG Wiki</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Plotting poster-quality maps in Python";
+        var mkdocs_page_input_path = "nice_maps.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Leeds BAG Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Computing tips and guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../linux_cheat_sheet/">Linux Cheat Sheet</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../python_quick_start/">Python Quick Start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../compute_resources/">BAG Approved Remote Access</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../VSCode_guide/">Using VSCode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../conda_setup/">Mamba Set Up</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../how_to_regrid_xesmf_tutorial/">Regridding with Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dask_demo/">Speedy Python with Dask</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../globus/">Using Globus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Transferring_data_using_SFTP/">Transferring Data via SFTP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SLURM_guide/">Guide to SLURM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../modern_fortran/">Modern Fortran</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../onedrive_syncing/">Easy OneDrive syncing</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">General tips</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../printing/">Printing A1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../paper_writing/">Writing Academic Papers</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Leeds BAG Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Plotting poster-quality maps in Python</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/leeds-bag/bag_wiki/edit/main/docs/nice_maps.md">Edit on leeds-bag/bag_wiki</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="plotting-poster-quality-maps-in-python">Plotting poster-quality maps in Python</h1>
+<p>Author: Ben Bradley, June 2026</p>
+<p>I wanted to create a nice image of satellite data overlayed on planet Earth, like a documentary-style plot. With a little help from AI I wrote some code to do this, which I then modified using Affinity graphic design software to create a final image to add to my poster. Here's the code so you can do this too!</p>
+<h2 id="final-result">Final result</h2>
+<p><img alt="Total Column CO over South America" src="../assets/earth_fig.png" /></p>
+<h2 id="downloading-background">Downloading background</h2>
+<p>NASA provide publicly-available high-res images of the Earth, which you can download and add to the background of your plots! You can select different resolutions too.</p>
+<p>Download them here: https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-map/</p>
+<h2 id="code-for-figure">Code for figure</h2>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import xarray as xr
+import cartopy.crs as ccrs
+import matplotlib.image as mpimg
+from datetime import date as Date
+
+from src.TROPOMI import load_TROPOMI
+
+from PIL import Image
+Image.MAX_IMAGE_PIXELS = 300_000_000  # above your image size
+
+# I have a custom function for loading the xarray data
+ds = load_TROPOMI(Date(2020, 9, 16), orbit=10, type=&quot;product&quot;)
+
+# extract the relevant variables
+data = ds.carbonmonoxide_total_column_corrected.values
+lats = ds[&quot;latitude&quot;]
+lons = ds[&quot;longitude&quot;]
+
+root_dir = &quot;&quot;
+texture_file = f&quot;{root_dir}/bluemarble_Aug_highres.jpg&quot; # High-res Earth image (Blue Marble)
+output_file = f&quot;{root_dir}/TROPOMI_CO_20200916_bluemarble_highres.png&quot;
+
+# Center over South America
+central_lon = -90
+central_lat = -30
+
+
+# =========================
+# CREATE FIGURE
+# =========================
+proj = ccrs.Orthographic(central_longitude=central_lon,
+                         central_latitude=central_lat)
+fig = plt.figure(figsize=(10, 10), dpi=1000)#, facecolor='black')
+ax = plt.axes(projection=proj)
+ax.set_global()
+ax.set_axis_off()
+ax.set_facecolor('black')
+
+# =========================
+# ADD EARTH TEXTURE
+# =========================
+img = mpimg.imread(texture_file)
+ax.imshow(img,
+          transform=ccrs.PlateCarree(),
+          extent=[-180, 180, -90, 90],
+          zorder=0)
+
+# =========================
+# PLOT DATA
+# =========================
+plot = plt.scatter(lons, lats, c=data,
+                   cmap='inferno',
+                   vmin=0, vmax=0.15,
+                   s=0.005,
+                   transform=ccrs.PlateCarree(),
+                   zorder=1, alpha=0.5)
+
+# =========================
+# CUSTOM COLORBAR (add if you want)
+# =========================
+# cbar = plt.colorbar(plot,
+#                     orientation='horizontal',
+#                     pad=0.05,
+#                     fraction=0.04)
+
+# cbar.set_label(&quot;Total Column CO [mol m$^{-2}$]&quot;, color='white')
+# cbar.ax.xaxis.set_tick_params(color='white')
+# plt.setp(cbar.ax.get_xticklabels(), color='white')
+
+# =========================
+# EXPORT HIGH-RES IMAGE
+# =========================
+plt.savefig(output_file,
+            dpi=1000,
+            bbox_inches='tight',
+            transparent=True)
+plt.close()
+print(f&quot;Saved: {output_file}&quot;)
+</code></pre>
+<p><img alt="Figure" src="../assets/TROPOMI_CO_20200916_bluemarble_highres.png" /></p>
+<h2 id="code-for-colourbar">Code for colourbar</h2>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import matplotlib as mpl
+
+# =========================
+# SETTINGS
+# =========================
+vmin = 0.0
+vmax = 0.15
+cmap = &quot;inferno&quot;   # match your main plot
+output_svg = &quot;bluemarble_colorbar.svg&quot;
+
+# =========================
+# CREATE FIGURE
+# =========================
+fig, ax = plt.subplots(figsize=(6, 1))  # long horizontal bar
+fig.patch.set_alpha(0)  # transparent background
+ax.set_visible(False)
+
+# =========================
+# CREATE COLORBAR
+# =========================
+norm = mpl.colors.Normalize(vmin=vmin, vmax=vmax)
+sm = mpl.cm.ScalarMappable(norm=norm, cmap=cmap)
+sm.set_array([])
+cbar = plt.colorbar(sm,
+                    ax=ax,
+                    orientation='horizontal',
+                    fraction=0.8,
+                    pad=0.2)
+
+# =========================
+# STYLE FOR POSTER
+# =========================
+cbar.set_label(&quot;Total Column CO (mol m$^{-2}$)&quot;, fontsize=12, color='white')
+cbar.ax.tick_params(labelsize=10, color=&quot;white&quot;)
+plt.setp(cbar.ax.get_xticklabels(), color='white')
+
+# Optional: custom ticks
+ticks = [0.0, 0.05, 0.10, 0.15]
+cbar.set_ticks(ticks)
+
+# =========================
+# SAVE AS VECTOR
+# =========================
+plt.savefig(output_svg, bbox_inches='tight', transparent=True)
+plt.close()
+print(f&quot;Saved: {output_svg}.&quot;)
+</code></pre>
+<p><img alt="Colourbar" src="../assets/bluemarble_colorbar.svg" /></p>
+<h2 id="combining-in-affinity">Combining in Affinity</h2>
+<p>I rotated the image, cropped it and added an atmopsheric glow using Affinity, a free graphic design software. You could probably do something similar in Powerpoint if you prefer or feel free to ask me about this. (Panorama/YES runs training on poster design using Affinity annually).</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/leeds-bag/bag_wiki" class="fa fa-code-fork" style="color: #fcfcfc"> leeds-bag/bag_wiki</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
