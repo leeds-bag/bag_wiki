@@ -1,0 +1,422 @@
+#!/bin/bash
+
+# --- Config ---
+ALIAS_FILE="$HOME/.sync_aliases"
+LOCAL_BASE="$HOME/figs"
+ACTION=$1
+TARGET_ALIAS=$2
+shift 2 2>/dev/null || true
+
+# --- Runtime Options ---
+FORCE_YES=1          # Default: do not ask for confirmation prompts.
+SHOW_PROGRESS=1      # Default: quiet rclone output.
+DRY_RUN=0            # Default: real changes.
+QUIET=0              # Default: show detailed check output.
+UPDATE_ONLY=0        # Default: true mirror semantics (allow updates and deletions).
+PUSH_COUNT=0
+PULL_COUNT=0
+PUSH_DELETE_COUNT=0
+PULL_DELETE_COUNT=0
+
+usage() {
+        cat <<'EOF'
+Usage:
+    figsync [check|pull|push|sync] [alias] [options]
+
+Options:
+    -y, --yes       Non-interactive mode (default)
+    -a, --ask       Ask before destructive sync flows
+    -n, --dry-run   Preview changes without writing
+    -u, --update-only
+                     Skip overwriting newer destination files
+    -v, --verbose   Show rclone transfer progress
+    -q, --quiet     Compact check output (summary only)
+    -h, --help      Show this help message
+EOF
+}
+
+# --- Figure Filtering ---
+# Keep filters in an array to prevent shell glob expansion from injecting filenames.
+FIGURE_FILTER_ARGS=(
+    --filter "+ *.png"
+    --filter "+ *.jpg"
+    --filter "+ *.jpeg"
+    --filter "+ *.pdf"
+    --filter "+ *.svg"
+    --filter "+ *.eps"
+    --filter "+ *.docx"
+    --filter "+ *.tif"
+    --filter "+ *.tiff"
+    --filter "+ *.gif"
+    --filter "+ *.xlsx"
+    --filter "- .git/**"
+    --filter "- *"
+)
+
+# --- Colors & Formatting ---
+C_GREEN="\e[32m"
+C_RED="\e[31m"
+C_YELLOW="\e[33m"
+C_CYAN="\e[36m"
+C_GRAY="\e[90m"
+C_RESET="\e[0m"
+C_BOLD="\e[1m"
+
+# --- Parse Optional Flags ---
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -y|--yes)
+            FORCE_YES=1
+            ;;
+        -a|--ask)
+            FORCE_YES=0
+            ;;
+        -n|--dry-run)
+            DRY_RUN=1
+            ;;
+        -u|--update-only)
+            UPDATE_ONLY=1
+            ;;
+        -v|--verbose)
+            SHOW_PROGRESS=1
+            ;;
+        -q|--quiet)
+            QUIET=1
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        *)
+            echo -e "${C_RED}❌ Unknown option: $1${C_RESET}"
+            usage
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+# --- Validate Usage ---
+if [[ "$ACTION" != "check" && "$ACTION" != "pull" && "$ACTION" != "push" && "$ACTION" != "sync" ]] || [ -z "$TARGET_ALIAS" ]; then
+    usage
+    exit 1
+fi
+
+if [ ! -f "$ALIAS_FILE" ]; then
+    echo -e "${C_RED}❌ Error: Alias file not found at $ALIAS_FILE${C_RESET}"
+    exit 1
+fi
+
+# --- Find the Remote Path ---
+REMOTE_SUBPATH=$(grep "^${TARGET_ALIAS}:" "$ALIAS_FILE" | cut -d':' -f2-)
+if [ -z "$REMOTE_SUBPATH" ]; then
+    echo -e "${C_RED}❌ Error: Alias '$TARGET_ALIAS' not found${C_RESET}"
+    exit 1
+fi
+
+REMOTE_PATH="onedrive:$REMOTE_SUBPATH"
+LOCAL_PATH="$LOCAL_BASE/$TARGET_ALIAS"
+
+# ==========================================
+# HELPER FUNCTIONS
+# ==========================================
+
+format_size() {
+    local size=$1
+    local prefix=""
+    if [ "$size" -lt 0 ]; then prefix="-"; size=$((size * -1));
+    elif [ "$size" -gt 0 ] && [ "$2" == "show_plus" ]; then prefix="+"; fi
+
+    if [ "$size" -lt 1024 ]; then echo "${prefix}${size}B"
+    elif [ "$size" -lt 1048576 ]; then echo "${prefix}$((size/1024))KB"
+    else echo | awk "{printf \"${prefix}%.1fMB\", $size/1048576}"; fi
+}
+
+format_time() {
+    local t=$1
+    local d=$((t/86400))
+    local h=$(( (t%86400)/3600 ))
+    local m=$(( (t%3600)/60 ))
+    local s=$((t%60))
+    if [ $d -gt 0 ]; then echo "${d}d ${h}h"; elif [ $h -gt 0 ]; then echo "${h}h ${m}m";
+    elif [ $m -gt 0 ]; then echo "${m}m ${s}s"; else echo "${s}s"; fi
+}
+
+fix_permissions() {
+    echo -e "${C_GRAY}   🔧 Restoring permissions...${C_RESET}"
+    chmod -R u+rwX,go+rX,go-w "$LOCAL_PATH"
+}
+
+run_rclone_sync() {
+    local src=$1
+    local dst=$2
+    local args=()
+
+    if [ "$UPDATE_ONLY" -eq 1 ]; then
+        args+=(--update)
+    fi
+
+    if [ "$DRY_RUN" -eq 1 ]; then
+        args+=(--dry-run)
+    fi
+
+    if [ "$SHOW_PROGRESS" -eq 1 ]; then
+        args+=(-P)
+    fi
+
+    rclone sync "$src" "$dst" "${FIGURE_FILTER_ARGS[@]}" "${args[@]}"
+}
+
+ensure_local_source_exists_or_abort() {
+    if [ ! -d "$LOCAL_PATH" ]; then
+        echo -e "${C_RED}❌ Error: Local source directory not found:${C_RESET} $LOCAL_PATH"
+        echo -e "${C_GRAY}   Tip: run pull first if you want to restore it from remote.${C_RESET}"
+        exit 1
+    fi
+}
+
+compute_delete_counts() {
+    local l_man r_man file
+
+    PUSH_DELETE_COUNT=0
+    PULL_DELETE_COUNT=0
+    l_man=$(mktemp)
+    r_man=$(mktemp)
+
+    rclone lsf "$LOCAL_PATH" "${FIGURE_FILTER_ARGS[@]}" --format "p" -R 2>/dev/null > "$l_man"
+    rclone lsf "$REMOTE_PATH" "${FIGURE_FILTER_ARGS[@]}" --format "p" -R 2>/dev/null > "$r_man"
+
+    # Files that exist remotely but not locally would be deleted by PUSH.
+    while read -r file; do
+        [ -z "$file" ] && continue
+        if ! grep -Fxq "$file" "$l_man"; then
+            ((PUSH_DELETE_COUNT++))
+        fi
+    done < "$r_man"
+
+    # Files that exist locally but not remotely would be deleted by PULL.
+    while read -r file; do
+        [ -z "$file" ] && continue
+        if ! grep -Fxq "$file" "$r_man"; then
+            ((PULL_DELETE_COUNT++))
+        fi
+    done < "$l_man"
+
+    rm -f "$l_man" "$r_man"
+}
+
+confirm_deletions_or_abort() {
+    local del_remote=$1
+    local del_local=$2
+    local confirm
+
+    # Dry run never applies deletions, so skip hard confirmation.
+    if [ "$DRY_RUN" -eq 1 ]; then
+        return 0
+    fi
+
+    if [ "$del_remote" -eq 0 ] && [ "$del_local" -eq 0 ]; then
+        return 0
+    fi
+
+    echo -e "${C_RED}⚠️  Deletion warning:${C_RESET} this operation will delete ${C_BOLD}${del_remote}${C_RESET} file(s) on remote and ${C_BOLD}${del_local}${C_RESET} file(s) locally."
+    read -p "Are you sure? [y/N]: " confirm
+    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+        echo -e "${C_RED}❌ Aborted.${C_RESET}"
+        exit 1
+    fi
+}
+
+# ==========================================
+# FUNCTION: AUDIT / CHECK 
+# ==========================================
+run_check() {
+    if [ "$QUIET" -eq 0 ]; then
+        echo "-----------------------------------------------------------------------------------------------------------------"
+        echo -e "🔍 ${C_BOLD}FIGURE AUDIT: $TARGET_ALIAS${C_RESET}"
+        echo -e "📍 Local:  ${C_GRAY}$LOCAL_PATH${C_RESET}"
+        echo -e "📍 Remote: ${C_GRAY}$REMOTE_PATH${C_RESET}"
+        echo "-----------------------------------------------------------------------------------------------------------------"
+    fi
+
+    L_MAN=$(mktemp)
+    R_MAN=$(mktemp)
+
+    [ "$QUIET" -eq 0 ] && echo -en "${C_CYAN}🔄 Fetching figure manifests... ${C_RESET}"
+    
+    rclone lsf "$LOCAL_PATH" "${FIGURE_FILTER_ARGS[@]}" --format "stp" --separator "|" -R 2>/dev/null > "$L_MAN" &
+    rclone lsf "$REMOTE_PATH" "${FIGURE_FILTER_ARGS[@]}" --format "stp" --separator "|" -R 2>/dev/null > "$R_MAN" &
+    wait
+    [ "$QUIET" -eq 0 ] && echo -e "${C_GREEN}Done.${C_RESET}"
+
+    if [ "$QUIET" -eq 0 ]; then
+        printf "${C_BOLD}%-30s | %-10s | %-10s | %-16s | %-22s${C_RESET}\n" "FILE" "LOCAL" "ONEDRIVE" "SIZE" "CHOICE"
+        echo "------------------------------+------------+------------+------------------+------------------------"
+    fi
+
+    PUSH_COUNT=0
+    PULL_COUNT=0
+    PUSH_DELETE_COUNT=0
+    PULL_DELETE_COUNT=0
+
+    # 1. Compare Remote list to Local
+    while read -r r_line; do
+        [ -z "$r_line" ] && continue
+        R_SIZE=$(echo "$r_line" | cut -d'|' -f1)
+        R_TIME_S=$(echo "$r_line" | cut -d'|' -f2)
+        FILE=$(echo "$r_line" | cut -d'|' -f3)
+        
+        l_match=$(awk -F'|' -v f="$FILE" '$3 == f {print $0}' "$L_MAN" | head -n1)
+        FILE_DISP=$(echo "$FILE" | awk '{ if (length($0) > 29) print substr($0, 1, 26)"..."; else print $0 }')
+
+        if [ -z "$l_match" ]; then
+            DETAILS="$(format_size "$R_SIZE" "show_plus")"
+            CHOICE="Push:DEL Pull:GETR"
+            if [ "$QUIET" -eq 0 ]; then
+                printf -v LOCAL_CELL "%-10s" "x"
+                printf -v REMOTE_CELL "%-10s" "v"
+                printf -v SIZE_CELL "%-16s" "$DETAILS"
+                printf -v CHOICE_CELL "%-22s" "$CHOICE"
+                printf "%-30s | ${C_RED}%s${C_RESET} | ${C_GREEN}%s${C_RESET} | ${C_CYAN}%s${C_RESET} | ${C_BOLD}%s${C_RESET}\n" "$FILE_DISP" "$LOCAL_CELL" "$REMOTE_CELL" "$SIZE_CELL" "$CHOICE_CELL"
+            fi
+            ((PULL_COUNT++))
+            ((PUSH_DELETE_COUNT++))
+        else
+            L_SIZE=$(echo "$l_match" | cut -d'|' -f1)
+            L_TIME_S=$(echo "$l_match" | cut -d'|' -f2)
+            L_TIME=$(date -d "$L_TIME_S" +%s 2>/dev/null || echo 0)
+            R_TIME=$(date -d "$R_TIME_S" +%s 2>/dev/null || echo 0)
+
+            if [ "$R_TIME" -gt "$L_TIME" ]; then
+                T_DIFF=$((R_TIME - L_TIME))
+                S_DIFF=$((R_SIZE - L_SIZE))
+                DETAILS="$(format_size "$S_DIFF" "show_plus"), $(format_time $T_DIFF)"
+                CHOICE="Push:KEEPL Pull:GETR"
+                if [ "$QUIET" -eq 0 ]; then
+                    printf -v LOCAL_CELL "%-10s" "Older"
+                    printf -v REMOTE_CELL "%-10s" "Newer"
+                    printf -v SIZE_CELL "%-16s" "$DETAILS"
+                    printf -v CHOICE_CELL "%-22s" "$CHOICE"
+                    printf "%-30s | ${C_YELLOW}%s${C_RESET} | ${C_GREEN}%s${C_RESET} | ${C_GRAY}%s${C_RESET} | ${C_BOLD}%s${C_RESET}\n" "$FILE_DISP" "$LOCAL_CELL" "$REMOTE_CELL" "$SIZE_CELL" "$CHOICE_CELL"
+                fi
+                ((PULL_COUNT++))
+            elif [ "$L_TIME" -gt "$R_TIME" ]; then
+                T_DIFF=$((L_TIME - R_TIME))
+                S_DIFF=$((L_SIZE - R_SIZE))
+                DETAILS="$(format_size "$S_DIFF" "show_plus"), $(format_time $T_DIFF)"
+                CHOICE="Push:GETL Pull:KEEPR"
+                if [ "$QUIET" -eq 0 ]; then
+                    printf -v LOCAL_CELL "%-10s" "Newer"
+                    printf -v REMOTE_CELL "%-10s" "Older"
+                    printf -v SIZE_CELL "%-16s" "$DETAILS"
+                    printf -v CHOICE_CELL "%-22s" "$CHOICE"
+                    printf "%-30s | ${C_GREEN}%s${C_RESET} | ${C_YELLOW}%s${C_RESET} | ${C_GRAY}%s${C_RESET} | ${C_BOLD}%s${C_RESET}\n" "$FILE_DISP" "$LOCAL_CELL" "$REMOTE_CELL" "$SIZE_CELL" "$CHOICE_CELL"
+                fi
+                ((PUSH_COUNT++))
+            fi
+        fi
+    done < "$R_MAN"
+
+    # 2. Files on Local that aren't on Remote
+    while read -r l_line; do
+        [ -z "$l_line" ] && continue
+        FILE=$(echo "$l_line" | cut -d'|' -f3)
+        if ! grep -q "|$FILE$" "$R_MAN"; then
+            L_SIZE=$(echo "$l_line" | cut -d'|' -f1)
+            FILE_DISP=$(echo "$FILE" | awk '{ if (length($0) > 29) print substr($0, 1, 26)"..."; else print $0 }')
+            DETAILS="$(format_size "$L_SIZE" "show_plus")"
+            CHOICE="Push:GETL Pull:DEL"
+            if [ "$QUIET" -eq 0 ]; then
+                printf -v LOCAL_CELL "%-10s" "v"
+                printf -v REMOTE_CELL "%-10s" "x"
+                printf -v SIZE_CELL "%-16s" "$DETAILS"
+                printf -v CHOICE_CELL "%-22s" "$CHOICE"
+                printf "%-30s | ${C_GREEN}%s${C_RESET} | ${C_RED}%s${C_RESET} | ${C_CYAN}%s${C_RESET} | ${C_BOLD}%s${C_RESET}\n" "$FILE_DISP" "$LOCAL_CELL" "$REMOTE_CELL" "$SIZE_CELL" "$CHOICE_CELL"
+            fi
+            ((PUSH_COUNT++))
+            ((PULL_DELETE_COUNT++))
+        fi
+    done < "$L_MAN"
+
+    [ "$QUIET" -eq 0 ] && echo "-----------------------------------------------------------------------------------------------------------------"
+    rm -f "$L_MAN" "$R_MAN"
+
+    if [ "$PUSH_COUNT" -eq 0 ] && [ "$PULL_COUNT" -eq 0 ]; then
+        echo -e "${C_GREEN}✅ FIGURES IN SYNC: Local and Remote are identical.${C_RESET}"
+        return 0
+    else
+        echo -e "${C_YELLOW}ℹ️  Differences found:${C_RESET} push=$PUSH_COUNT, pull=$PULL_COUNT"
+        return 1
+    fi
+}
+
+# ==========================================
+# EXECUTE ACTIONS
+# ==========================================
+
+if [ "$ACTION" == "check" ]; then run_check; exit 0; fi
+
+if [ "$ACTION" == "pull" ]; then
+    echo -e "${C_YELLOW}⬇️  Pulling (and mirroring deletions to local) for $TARGET_ALIAS...${C_RESET}"
+    [ "$UPDATE_ONLY" -eq 1 ] && echo -e "${C_GRAY}   update-only mode: newer local files will be preserved.${C_RESET}"
+    compute_delete_counts
+    confirm_deletions_or_abort 0 "$PULL_DELETE_COUNT"
+    mkdir -p "$LOCAL_PATH"
+    if ! run_rclone_sync "$REMOTE_PATH" "$LOCAL_PATH"; then
+        echo -e "${C_RED}❌ Pull failed.${C_RESET}"
+        exit 1
+    fi
+    fix_permissions
+    echo -e "${C_GREEN}✅ Pull Complete.${C_RESET}"
+    exit 0
+fi
+
+if [ "$ACTION" == "push" ]; then
+    echo -e "${C_GREEN}⬆️  Pushing (and mirroring deletions to remote) for $TARGET_ALIAS...${C_RESET}"
+    [ "$UPDATE_ONLY" -eq 1 ] && echo -e "${C_GRAY}   update-only mode: newer remote files will be preserved.${C_RESET}"
+    ensure_local_source_exists_or_abort
+    compute_delete_counts
+    confirm_deletions_or_abort "$PUSH_DELETE_COUNT" 0
+    if ! run_rclone_sync "$LOCAL_PATH" "$REMOTE_PATH"; then
+        echo -e "${C_RED}❌ Push failed.${C_RESET}"
+        exit 1
+    fi
+    echo -e "${C_GREEN}✅ Push Complete.${C_RESET}"
+    exit 0
+fi
+
+if [ "$ACTION" == "sync" ]; then
+    run_check
+    if [ $? -eq 0 ]; then exit 0; fi
+    confirm_deletions_or_abort "$PUSH_DELETE_COUNT" "$PULL_DELETE_COUNT"
+    if [ "$FORCE_YES" -eq 0 ]; then
+        read -p "Proceed with applying PUSH then PULL for $TARGET_ALIAS? [y/N]: " confirm
+        if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+            echo -e "${C_RED}❌ Sync aborted.${C_RESET}"
+            exit 1
+        fi
+    else
+        echo -e "${C_GRAY}   Auto mode: applying PUSH then PULL (use --ask to confirm interactively).${C_RESET}"
+    fi
+
+    echo ""
+    if [ "$PUSH_COUNT" -gt 0 ]; then
+        echo -e "${C_GREEN}⬆️  Executing PUSH...${C_RESET}"
+        ensure_local_source_exists_or_abort
+        if ! run_rclone_sync "$LOCAL_PATH" "$REMOTE_PATH"; then
+            echo -e "${C_RED}❌ Sync failed during PUSH stage.${C_RESET}"
+            exit 1
+        fi
+    fi
+    if [ "$PULL_COUNT" -gt 0 ]; then
+        echo -e "${C_YELLOW}⬇️  Executing PULL...${C_RESET}"
+        mkdir -p "$LOCAL_PATH"
+        if ! run_rclone_sync "$REMOTE_PATH" "$LOCAL_PATH"; then
+            echo -e "${C_RED}❌ Sync failed during PULL stage.${C_RESET}"
+            exit 1
+        fi
+        fix_permissions
+    fi
+
+    echo -e "\n${C_GREEN}✅ Smart Sync Complete.${C_RESET}"
+fi
