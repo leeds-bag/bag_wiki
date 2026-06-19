@@ -2,6 +2,8 @@
 
 Author: Ben Bradley, Feb 2026 (last updated: Feb 2026)
 
+![My experience with Fortran](assets/fortran_yelling.png)
+
 
 ## What is Fortran?
 
