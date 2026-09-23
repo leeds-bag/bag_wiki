@@ -23,6 +23,7 @@ nav:
       - Guide to SLURM: SLURM_guide.md
       - Modern Fortran: modern_fortran.md
       - Easy OneDrive syncing: onedrive_syncing.md
+      - B-drive backups: b_drive_backups.md
     
   - General tips:
       - Printing A1: printing.md
