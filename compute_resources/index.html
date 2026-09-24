@@ -247,9 +247,8 @@ Host fcwir
 <h3 id="2-copy-your-public-key-to-the-remote-server">2. Copy your public key to the remote server</h3>
 <pre><code class="language-bash">ssh-copy-id &lt;your_username&gt;@uol-gen-res-03.leeds.ac.uk
 </code></pre>
-<p>If you are off campus and connecting via <code>rash</code>, copy the key to <code>rash</code> first, then from <code>rash</code> to the target server:</p>
-<pre><code class="language-bash">ssh-copy-id &lt;your_username&gt;@rash.leeds.ac.uk
-ssh &lt;your_username&gt;@rash.leeds.ac.uk
+<p>If you are off campus and connecting via <code>rash</code>, ssh to <code>rash</code> then copy key to the target server:</p>
+<pre><code class="language-bash">ssh &lt;your_username&gt;@rash.leeds.ac.uk
 ssh-copy-id &lt;your_username&gt;@uol-gen-res-03.leeds.ac.uk
 </code></pre>
 <h3 id="3-enable-agent-forwarding">3. Enable agent forwarding</h3>
