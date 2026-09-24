@@ -114,10 +114,9 @@ This creates two files in `~/.ssh/`:
 ssh-copy-id <your_username>@uol-gen-res-03.leeds.ac.uk
 ```
 
-If you are off campus and connecting via `rash`, copy the key to `rash` first, then from `rash` to the target server:
+If you are off campus and connecting via `rash`, ssh to `rash` then copy key to the target server:
 
 ```bash
-ssh-copy-id <your_username>@rash.leeds.ac.uk
 ssh <your_username>@rash.leeds.ac.uk
 ssh-copy-id <your_username>@uol-gen-res-03.leeds.ac.uk
 ```
