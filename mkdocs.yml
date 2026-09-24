@@ -10,21 +10,21 @@ theme:
 
 nav:
   - Home: index.md
-  - Computing tips and guides:
+  - UoL Linux machines:
       - Linux Cheat Sheet: linux_cheat_sheet.md
-      - Python Quick Start: python_quick_start.md
       - BAG Approved Remote Access: compute_resources.md
-      - Using VSCode: VSCode_guide.md
-      - Mamba Set Up: conda_setup.md
-      - Regridding with Python: how_to_regrid_xesmf_tutorial.md
-      - Speedy Python with Dask: dask_demo.md
       - Using Globus: globus.md
       - Transferring Data via SFTP: Transferring_data_using_SFTP.md
       - Guide to SLURM: SLURM_guide.md
-      - Modern Fortran: modern_fortran.md
       - Easy OneDrive syncing: onedrive_syncing.md
       - B-drive backups: b_drive_backups.md
-    
+  - Guides:
+      - Python Quick Start: python_quick_start.md
+      - Using VSCode: VSCode_guide.md
+      - Regridding with Python: how_to_regrid_xesmf_tutorial.md
+      - Speedy Python with Dask: dask_demo.md
+      - Mamba Set Up: conda_setup.md
+      - Modern Fortran: modern_fortran.md
   - General tips:
       - Printing A1: printing.md
       - Writing Academic Papers: paper_writing.md
