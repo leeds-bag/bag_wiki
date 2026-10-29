@@ -1,9 +1,9 @@
 # 🖨️ Printing an A1 Poster on 4 Sheets of A3
 
-Author: Elle Smith, Nov 2025 (last updated: Nov 2025)
-
+Authors: Elle Smith+Ben Silver, Nov 2025 (last updated: Oct 2026)
 
 This guide details how to split an A1 poster into four separate A3 PDF sheets for printing on University of Leeds printers.
+
 
 ---
 
@@ -43,9 +43,12 @@ This guide details how to split an A1 poster into four separate A3 PDF sheets fo
 
 ## 3. Printing the A3 PDF Sheets
 
+!!! tip
+    To be able access the staff print queue and print in A3 we now need to install some software from the Company Portal. This [IT support article](https://it.leeds.ac.uk/it?id=kb_article&sys_id=280224c2fb8ec71044b2f82bbeefdc24) explains how.
+
 To successfully print A3 on campus:
 
-1.  You must be connected to the **VPN**.
+1.  You must be connected to the **VPN** or on the wired network/UOL corp.
 2.  Open each of the four saved A3 PDFs (e.g., in a browser like Chrome).
 3.  Initiate printing.
 4.  Select the **Staff on LeedsPrint** print queue as the **Destination**.
